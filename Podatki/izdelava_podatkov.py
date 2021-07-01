@@ -69,13 +69,12 @@ with open('izdelki_spar.csv','w',newline='') as fp:
             ["-","'sladoled'","'ljubljanske_mlekarne'","'cokolada_piran'","4.18","'1_l'"],
             ["-","'sladoled'","'ljubljanske_mlekarne'","'vanilija_cokolada_piran'","6.29","'2_l'"],
             ["-","'sladoled'","'ljubljanske_mlekarne'","'vanilija_jagoda_piran'","6.29","'2_l'"],
-            ["-","'sladoled'","'ledo'","'quattro_classic'","4.43","'0.9_l'"],
+            ["-","'sladoled'","'ledo'","'quattro_classic'","3.99","'0.9_l'"],
             ["-","'sladoled'","'ledo'","'quattro_banana_split'","3.99","'0.9_l'"],
             ["-","'sladoled'","'ledo'","'quattro_chocomania'","3.99","'0.9_l'"],
             ["-","'sladoled'","'ledo'","'quattro_rhapsody'","3.99","'0.9_l'"],
             ["-","'sladoled'","'ledo'","'quattro_jaffa'","3.99","'0.9_l'"],
             ["-","'cips'","'chio'","'paprika'","1.69","'0.125_kg'"],
-            ["-","'cips'","'chio_exxtra'","'sol'","1.69","'0.125_kg'"],
             ["-","'cips'","'chio_exxtra'","'sol'","1.69","'0.125_kg'"],
             ["-","'cips'","'chio'","'paprika'","1.99","'0.150_kg'"],
             ["-","'cips'","'chio'","'s_sirom'","1.99","'0.150_kg'"],
@@ -107,9 +106,6 @@ with open('izdelki_mercator.csv','w',newline='') as fp1:
             ["-","'kruh'","'zito'","'mesani_kruh_krusnik'","2.79","'0.75_kg'"],
             ["-","'kruh'","'zito'","'jelenov_beli_kruh'","3.39","'1_kg'"],
             ["-","'kruh'","'zito'","'beli_kruh_hribovc'","3.49","'1_kg'"],
-
-
-
             ["-","'pivo'","'union'","'svetlo_pivo_steklenica'","1.14","'0.5_l'"],
             ["-","'pivo'","'union'","'svetlo_pivo_plocevinka'","1.09","'0.5_l'"],
             ["-","'pivo'","'union'","'svetlo_pivo_steklenica'","0.94","'0.33_l'"],
@@ -119,26 +115,32 @@ with open('izdelki_mercator.csv','w',newline='') as fp1:
             ["-","'pivo'","'union'","'nefiltrirano_steklenica'","1.24","'0.5_l'"],
             ["-","'pivo'","'union'","'nefiltrirano_plocevinka'","1.29","'0.5_l'"],
             ["-","'pivo'","'heineken'","'brezalkoholno_0.0_plocevinka'","0.99","'0.33_l'"],
-            ["-","'pivo'","'union'","'brezalkoholno_0.0_steklenica'","0.67","'0.5_l'"],
             ["-","'pivo'","'union'","'brezalkoholno_0.0_plocevinka'","0.73","'0.5_l'"],
             ["-","'pivo'","'heineken'","'svetlo_pivo_plocevinka'","0.99","'0.33_l'"],
+            ["-","'pivo'","'heineken'","'svetlo_pivo_plocevinka'","1.29","'0.5_l'"],
             ["-","'pivo'","'union'","'temno_nefiltrirano_steklenica'","1.29","'0.5_l'"],
-            ["-","'pivo'","'union'","'temno_nefiltrirano_plocevinka'","1.36","'0.5_l'"],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
+            ["-","'pivo'","'union'","'temno_nefiltrirano_plocevinka'","1.34","'0.5_l'"],
+            ["-","'sok'","'fructal'","'borovnica_superior'","2.49","'1_l'"],
+            ["-","'sok'","'fructal'","'borovnica'","1.29","'1_l'"],
+            ["-","'sok'","'fructal'","'crni_ribez_superior'","1.79","'1_l'"],
+            ["-","'sok'","'fructal'","'crni_ribez_granatno_jabolko'","1.09","'1_l'"],
+            ["-","'sok'","'fructal'","'hruska_superior'","1.59","'1_l'"],
+            ["-","'sok'","'fructal'","'hruska'","1.45","'1.5_l'"],
+            ["-","'sok'","'fructal'","'marelica_superior'","1.69","'1_l'"],
+            ["-","'sok'","'fructal'","'marelica'","1.09","'1_l'"],
+            ["-","'sok'","'fructal'","'jagoda_superior'","2.25","'1_l'"],
+            ["-","'sok'","'fructal'","'jagoda_jabolko_aronija'","1.55","'1.5_l'"],
+            ["-","'sok'","'fructal'","'ananas_superior'","2.19","'1_l'"],
+            ["-","'sok'","'fructal'","'breskev_superior'","1.69","'1_l'"],
+            ["-","'sok'","'fructal'","'breskev'","1.09","'1_l'"],
+            ["-","'sok'","'fructal'","'breskev'","1.45","'1.5_l'"],
+            ["-","'sok'","'sola'","'ledeni_caj_breskev'","0.99","'1.5_l'"],
+            ["-","'sok'","'sola'","'ledeni_caj_breskev'","0.59","'0.5_l'"],
+            ["-","'sok'","'sola'","'ledeni_caj_breskev'","0.59","'0.33_l'"],
+            ["-","'sok'","'mercator'","'ledeni_caj_breskev'","0.52","'1.5_l'"],
+            ["-","'sok'","'sola'","'ledeni_caj_brusnica'","0.99","'1.5_l'"],
+            ["-","'sok'","'fructal'","'ledeni_caj_breskev'","1.09","'1.5_l'"],
+            ["-","'sok'","'fructal'","'ledeni_caj_breskev'","0.60","'0.5_l'"], 
             ["-","'sadje'","'derby'","'banana'","1.29","'1_kg'"],
             ["-","'sadje'","'-'","'lubenica'","0.89","'1_kg'"],
             ["-","'sadje'","'-'","'limona'","1.69","'1_kg'"],
@@ -156,7 +158,24 @@ with open('izdelki_mercator.csv','w',newline='') as fp1:
             ["-","'zelenjava'","'-'","'paradiznik_beef'","1.99","'1_kg'"],
             ["-","'zelenjava'","'-'","'paradiznik_v_grozdu_premium'","1.99","'1_kg'"],
             ["-","'zelenjava'","'-'","'slovenski_paradiznik_v_grozdih'","1.99","'1_kg'"],
-            ["-","'zelenjava'","'-'","'cesnjev_paradiznik'","2.49","'0.25_kg'"]
+            ["-","'zelenjava'","'-'","'cesnjev_paradiznik'","2.49","'0.25_kg'"],
+            ["-","'sladoled'","'ljubljanske_mlekarne'","'kakav_in_vanilija_otocec'","3.99","'1_l'"],   
+            ["-","'sladoled'","'ljubljanske_mlekarne'","'vanilija_cokolada_piran'","6.29","'2_l'"],  
+            ["-","'sladoled'","'ljubljanske_mlekarne'","'vanilija_jagoda_piran'","6.29","'2_l'"],
+            ["-","'sladoled'","'ledo'","'quattro_classic'","3.99","'0.9_l'"],
+            ["-","'sladoled'","'ledo'","'quattro_banana_split'","3.99","'0.9_l'"],
+            ["-","'sladoled'","'ledo'","'quattro_chocomania'","3.99","'0.9_l'"], 
+            ["-","'sladoled'","'ledo'","'quattro_jaffa'","3.99","'0.9_l'"],
+            ["-","'cips'","'chio_exxtra'","'paprika'","1.69","'0.125_kg'"],
+            ["-","'cips'","'chio_exxtra'","'sol'","1.69","'0.125_kg'"],
+            ["-","'cips'","'chio'","'paprika'","1.99","'0.150_kg'"],
+            ["-","'cips'","'chio'","'s_sirom'","1.99","'0.150_kg'"],
+            ["-","'cips'","'chio'","'kisla_smetana_in_cebula'","1.99","'0.150_kg'"],
+            ["-","'cips'","'chio'","'slan'","1.99","'0.150_kg'"],
+            ["-","'cips'","'mercator'","'paprika_rebrasti_hrusty'","0.78","'0.150_kg'"],
+            ["-","'cips'","'mercator'","'paprika_hrusty'","0.75","'0.150_kg'"],
+            ["-","'cips'","'mercator'","'slan_hrusty'","0.75","'0.150_kg'"],
+            ["-","'cips'","'mercator'","'slan_rebrasti_hrusty'","0.78","'0.150_kg'"]
             ]
     a.writerows(data)
 
