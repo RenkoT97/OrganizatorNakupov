@@ -86,8 +86,8 @@ with open('izdelki_spar.csv','w',newline='') as fp:
             ]
     a.writerows(data)
 
-with open('izdelki_mercator.csv','w',newline='') as fp:
-    a = csv.writer(fp, delimiter=',')
+with open('izdelki_mercator.csv','w',newline='') as fp1:
+    a = csv.writer(fp1, delimiter=',')
     data = [["'id_izdelka'","'ime_izdelka'","'firma'","'okus'", "'redna_cena'", "'teza'"],
             ["-","'cokolada'","'milka'","'mlecna'","2.79","'250_g'"],
             ["-","'cokolada'","'milka'","'celi_lesniki'","1.14","'100_g'"],
@@ -160,8 +160,8 @@ with open('izdelki_mercator.csv','w',newline='') as fp:
             ]
     a.writerows(data)
 
-with open('izdelki_tus.csv','w',newline='') as fp:
-    a = csv.writer(fp, delimiter=',')
+with open('izdelki_tus.csv','w',newline='') as fp2:
+    a = csv.writer(fp2, delimiter=',')
     data = [["'id_izdelka'","'ime_izdelka'","'firma'","'okus'", "'redna_cena'", "'teza'"],
             ["-","'cokolada'","'milka'","'mlecna'","2.99","'250_g'"],
             ["-","'cokolada'","'milka'","'celi_lesniki'","2.97","'250_g'"],
