@@ -97,7 +97,66 @@ with open('izdelki_mercator.csv','w',newline='') as fp:
             ["-","'mleko'","'trajno_mlekO_zelene_doline'","'3,5%'","1.19","'1_l'"],
             ["-","'mleko'","'trajno_mlekO_zelene_doline'","'1,5%'","1.14","'1_l'"],
             ["-","'moka'","'mlin_katic'","'psenicna_bela_moka'","0.66","'1_kg'"],
-            ["-","'moka'","'mlinotest'","'psenicna_mehka_moka'","1.19","'1_kg'"]
+            ["-","'moka'","'mlinotest'","'psenicna_mehka_moka'","1.19","'1_kg'"],
+            ["-","'kruh'","'zito'","'ajdov_kruh_z_orehi'","2.19","'0.4_kg'"],
+            ["-","'kruh'","'zito'","'polbeli_jelenov_kruh'","3.39","'1_kg'"],  
+            ["-","'kruh'","'zito'","'stoletni_kruh_s_semeni'","3.59","'0.75_kg'"],
+            ["-","'kruh'","'zito'","'mesani_hlebec_hribovc'","3.49","'1_kg'"],
+            ["-","'kruh'","'zito'","'mesani_koruzni_kruh'","1.59","'0.5_kg'"],
+            ["-","'kruh'","'zito'","'polnozrnati_jelenov_kruh'","3.39","'1_kg'"],
+            ["-","'kruh'","'zito'","'mesani_kruh_krusnik'","2.79","'0.75_kg'"],
+            ["-","'kruh'","'zito'","'jelenov_beli_kruh'","3.39","'1_kg'"],
+            ["-","'kruh'","'zito'","'beli_kruh_hribovc'","3.49","'1_kg'"],
+
+
+
+            ["-","'pivo'","'union'","'svetlo_pivo_steklenica'","1.14","'0.5_l'"],
+            ["-","'pivo'","'union'","'svetlo_pivo_plocevinka'","1.09","'0.5_l'"],
+            ["-","'pivo'","'union'","'svetlo_pivo_steklenica'","0.94","'0.33_l'"],
+            ["-","'pivo'","'lasko'","'svetlo_pivo_steklenica'","1.14","'0.5_l'"],
+            ["-","'pivo'","'lasko'","'svetlo_pivo_plocevinka'","1.09","'0.5_l'"],
+            ["-","'pivo'","'lasko'","'svetlo_pivo_steklenica'","0.94","'0.33_l'"],
+            ["-","'pivo'","'union'","'nefiltrirano_steklenica'","1.24","'0.5_l'"],
+            ["-","'pivo'","'union'","'nefiltrirano_plocevinka'","1.29","'0.5_l'"],
+            ["-","'pivo'","'heineken'","'brezalkoholno_0.0_plocevinka'","0.99","'0.33_l'"],
+            ["-","'pivo'","'union'","'brezalkoholno_0.0_steklenica'","0.67","'0.5_l'"],
+            ["-","'pivo'","'union'","'brezalkoholno_0.0_plocevinka'","0.73","'0.5_l'"],
+            ["-","'pivo'","'heineken'","'svetlo_pivo_plocevinka'","0.99","'0.33_l'"],
+            ["-","'pivo'","'union'","'temno_nefiltrirano_steklenica'","1.29","'0.5_l'"],
+            ["-","'pivo'","'union'","'temno_nefiltrirano_plocevinka'","1.36","'0.5_l'"],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            ["-","'sadje'","'derby'","'banana'","1.29","'1_kg'"],
+            ["-","'sadje'","'-'","'lubenica'","0.89","'1_kg'"],
+            ["-","'sadje'","'-'","'limona'","1.69","'1_kg'"],
+            ["-","'sadje'","'-'","'kivi'","3.69","'1_kg'"],
+            ["-","'sadje'","'-'","'melona'","1.99","'1_kg'"],
+            ["-","'sadje'","'-'","'marelice'","2.89","'1_kg'"],
+            ["-","'sadje'","'-'","'cesnje'","2.99","'0.5_kg'"],
+            ["-","'zelenjava'","'-'","'korenje'","1.09","'1_kg'"],
+            ["-","'zelenjava'","'-'","'ohrovt'","1.39","'1_kg'"],   
+            ["-","'zelenjava'","'-'","'rdeca_paprika'","3.29","'1_kg'"],
+            ["-","'zelenjava'","'-'","'por'","3.69","'1_kg'"],
+            ["-","'zelenjava'","'-'","'cebula'","1.19","'1_kg'"],
+            ["-","'zelenjava'","'-'","'cesen'","2.19","'0.25_kg'"],
+            ["-","'zelenjava'","'-'","'rdeci_radic'","2.89","'1_kg'"],
+            ["-","'zelenjava'","'-'","'paradiznik_beef'","1.99","'1_kg'"],
+            ["-","'zelenjava'","'-'","'paradiznik_v_grozdu_premium'","1.99","'1_kg'"],
+            ["-","'zelenjava'","'-'","'slovenski_paradiznik_v_grozdih'","1.99","'1_kg'"],
+            ["-","'zelenjava'","'-'","'cesnjev_paradiznik'","2.49","'0.25_kg'"]
             ]
     a.writerows(data)
 
