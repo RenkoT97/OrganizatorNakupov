@@ -764,4 +764,29 @@ with open('vsi_izdelki.csv','w',newline='') as fp_iz:
     a = csv.writer(fp_iz, delimiter=',')
     a.writerows(data)
 
+with open('trgovine.csv','w',newline='') as asd:
+    a = csv.writer(asd, delimiter=',')
+    data1 = [["ime_trgovine", "lokacija"],
+            ["spar", "Corfe Alley"],
+            ["spar", "Highlands Cliff"],
+            ["spar", "Broad Heights"],
+            ["spar", "Gibson Loke"],
+            ["spar", "Ellicks Close"],
+            ["mercator", "Hornhatch"],
+            ["mercator", "Laburnum Lane"],
+            ["mercator", "Thorpe Leys"],
+            ["mercator", "Waterside Boulevard"],
+            ["mercator", "Millbrook Market"],
+            ["tus", " Beeches Oak"],
+            ["tus", "Priory Crescent"],
+            ["hofer", "Cromer Point"],
+            ["hofer", "Dingle Close"],
+            ["hofer", "Rydal Square"],
+            ["hofer", "Beechcroft Wynd"],
+            ["lidl", "Mount Pleasant Woodlands"],
+            ["lidl", "Priors Bridge"],
+            ["lidl", "Bull Isaf"],
+            ["lidl", "Bernard Fairway"]
+            ]
+    a.writerows(data1)
 
