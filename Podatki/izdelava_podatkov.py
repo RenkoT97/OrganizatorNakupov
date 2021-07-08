@@ -1,4 +1,5 @@
-import csv 
+import csv
+import random
 
 with open('izdelki_spar.csv','w',newline='') as fp:
     a = csv.writer(fp, delimiter=',')
@@ -389,9 +390,8 @@ with open('izdelki_lidl.csv','w',newline='') as fp3:
             ]
     a.writerows(data)
 
-with open('vsi_izdelki.csv','w',newline='') as fp_iz:
-    a = csv.writer(fp_iz, delimiter=',')
-    data = [["'id_izdelka'","trgovina","'ime_izdelka'","'firma'","'okus'", "'redna_cena'", "'teza'"],
+
+data = [["'id_izdelka'","trgovina","'ime_izdelka'","'firma'","'okus'", "'redna_cena'", "'teza'"],
             ["-","spar","'cokolada'","'milka'","'mlecna'","1.19","'100_g'"],
             ["-","spar","'cokolada'","'milka'","'celi_lesniki'","1.14","'100_g'"],
             ["-","spar","'cokolada'","'milka'","'bela'","1.19","'100_g'"],
@@ -747,6 +747,21 @@ with open('vsi_izdelki.csv','w',newline='') as fp_iz:
             ["-","lidl","'cips'","'snack_day'","'slani_rebrasti'","0.65","'0.15_kg'"],
             ["-","lidl","'namaz'","'ferrero'","'nutella'","5.19","'0.75_kg'"]
             ]
+
+dolzina_data = len(data)
+randomlist = random.sample(range(1000000, 9999999), dolzina_data)
+
+stevec = 1
+for i in data:
+    for j in i:
+        if j == "-":
+            data[stevec][0] = randomlist[stevec]
+            stevec = stevec +1
+            
+        
+
+with open('vsi_izdelki.csv','w',newline='') as fp_iz:
+    a = csv.writer(fp_iz, delimiter=',')
     a.writerows(data)
 
 
