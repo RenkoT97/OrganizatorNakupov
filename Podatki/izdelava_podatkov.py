@@ -81,7 +81,8 @@ with open('izdelki_spar.csv','w',newline='') as fp:
             ["-","'cips'","'chio'","'kisla_smetana_in_cebula'","1.99","'0.150_kg'"],
             ["-","'cips'","'chio'","'slan'","1.51","'0.150_kg'"],
             ["-","'cips_tortilija'","'spar'","'koruzna'","0.89","'0.125_kg'"],
-            ["-","'cips'","'spar'","'paprika'","1.05","'0.170_kg'"]
+            ["-","'cips'","'spar'","'paprika'","1.05","'0.170_kg'"],
+            ["-","'namaz'","'ferrero'","'nutella'","4.89","'0.7_kg'"]
             ]
     a.writerows(data)
 
@@ -175,7 +176,8 @@ with open('izdelki_mercator.csv','w',newline='') as fp1:
             ["-","'cips'","'mercator'","'paprika_rebrasti_hrusty'","0.78","'0.150_kg'"],
             ["-","'cips'","'mercator'","'paprika_hrusty'","0.75","'0.150_kg'"],
             ["-","'cips'","'mercator'","'slan_hrusty'","0.75","'0.150_kg'"],
-            ["-","'cips'","'mercator'","'slan_rebrasti_hrusty'","0.78","'0.150_kg'"]
+            ["-","'cips'","'mercator'","'slan_rebrasti_hrusty'","0.78","'0.150_kg'"],
+            ["-","'namaz'","'ferrero'","'nutella'","5.14","'0.7_kg'"]
             ]
     a.writerows(data)
 
@@ -191,8 +193,6 @@ with open('izdelki_tus.csv','w',newline='') as fp2:
             ["-","'moka'","'zito'","'psenicna_posebna_bela_moka'","0.96","'1_kg'"],
             ["-","'kruh'","'zito'","'hribovc_s_cebulo'","2.19","'0.5_kg'"],
             ["-","'kruh'","'pekarna_gersak'","'koreninica_s_semeni'","1.09","'120_g'"],
-
-            #sok še mal dej 
             ["-","'sok'","'fructal'","'borovnica_superior'","2.49","'1_l'"],
             ["-","'sok'","'fructal'","'borovnica'","1.29","'1_l'"],
             ["-","'sok'","'fructal'","'crni_ribez_superior'","1.79","'1_l'"],
@@ -213,22 +213,19 @@ with open('izdelki_tus.csv','w',newline='') as fp2:
             ["-","'sok'","'mercator'","'ledeni_caj_breskev'","0.52","'1.5_l'"],
             ["-","'sok'","'sola'","'ledeni_caj_brusnica'","0.99","'1.5_l'"],
             ["-","'sok'","'fructal'","'ledeni_caj_breskev'","1.09","'1.5_l'"],
-            ["-","'sok'","'fructal'","'ledeni_caj_breskev'","0.60","'0.5_l'"],
-            # sadje je kul             
+            ["-","'sok'","'fructal'","'ledeni_caj_breskev'","0.60","'0.5_l'"],         
             ["-","'sadje'","'derby'","'ameriske_borovnice'","3.99","'250_g'"],
             ["-","'sadje'","'-'","'ananas'","1.39","'1_kg'"],
             ["-","'sadje'","'-'","'belo_grozdje'","3.39","'1_kg'"],
             ["-","'sadje'","'-'","'nektarine'","1.99","'1_kg'"],
             ["-","'sadje'","'-'","'breskve'","1.59","'1_kg'"],
             ["-","'sadje'","'-'","'lubenica'","0.59","'1_kg'"],
-            
             ["-","'zelenjava'","'-'","'mlado_zelje'","0.89","'1_kg'"],
             ["-","'zelenjava'","'-'","'kumare'","0.89","'1_kg'"],   
             ["-","'zelenjava'","'kresnik_kiflicar'","'krompir'","1.99","'1_kg'"],
             ["-","'zelenjava'","'-'","'zeleni_strocji_fizol'","3.39","'1_kg'"],
             ["-","'zelenjava'","'-'","'paprika_zelena'","1.79","'1_kg'"],
             ["-","'zelenjava'","'grapolo'","'paradiznik_v_grozdih'","2.19","'0.25_kg'"],
-            
             ["-","'sladoled'","'carte_dor'","'cookies_cream_flavour'","5.79","'0.9_l'"],   
             ["-","'sladoled'","'carte_dor'","'stracciatella'","5.79","'0.9_l'"],  
             ["-","'sladoled'","'carte_dor'","'yoghurt_forest:fruit'","5.79","'0.9_l'"],
@@ -251,6 +248,15 @@ with open('izdelki_hofer.csv','w',newline='') as fp3:
     a = csv.writer(fp3, delimiter=',')
     data = [["'id_izdelka'","'ime_izdelka'","'firma'","'okus'", "'redna_cena'", "'teza'"],
             ["-","'cokolada'","'choceur'","'mlecna_cokolada_s_celimi_mandlji'","1.99","'300_g'"],
+            ["-","'cokolada'","'milka'","'mlecna'","1.09","'100_g'"],
+            ["-","'cokolada'","'milka'","'celi_lesniki'","1.08","'100_g'"],
+            ["-","'cokolada'","'milka'","'mlecna_mmmax'","2.89","'300_g'"],
+            ["-","'cokolada'","'milka'","'celi_lesniki'","2.89","'300_g'"],
+            ["-","'cokolada'","'milka'","'nuss_nougat_creme'","2.89","'300_g'"],
+            ["-","'cokolada'","'milka'","'choco_biscuit'","2.89","'300_g'"],
+            ["-","'cokolada'","'milka'","'nuss_nougat_creme'","2.89","'300_g'"],
+            ["-","'moka'","'happy_harvest'","'namenska_moka_za_domace_pecivo","0.47","'1_kg'"],
+            ["-","'moka'","'happy_harvest'","'gladka_psenicna_moka","0.47","'1_kg'"],
             ["-","'kruh'","'hofer'","'ajdov_kruh_z_orehi'","1.99","'0.4_kg'"],
             ["-","'kruh'","'hofer'","'pirin_polnozrnati_kruh'","1.49","'0.4_kg'"],
             ["-","'kruh'","'hofer'","'kraljevi_hlebcek'","1.49","'0.5_kg'"],
@@ -263,11 +269,32 @@ with open('izdelki_hofer.csv','w',newline='') as fp3:
             ["-","'kruh'","'hofer'","'veczrnata_strucka'","0.49","'0.1_kg'"],
             ["-","'pivo'","'staropramen'","'granat_plocevinka'","0.95","'0.5_l'"],
             ["-","'pivo'","'staropramen'","'nefiltrirano_plocevinka'","0.95","'0.5_l'"],
+            ["-","'pivo'","'lasko'","'svetlo_pivo_plocevinka'","0.97","'0.5_l'"],
+            ["-","'pivo'","'union'","'svetlo_pivo_plocevinka'","0.97","'0.5_l'"],
+            ["-","'pivo'","'bergkonig'","'svetlo_nefiltrirano_plocevinka'","0.79","'0.5_l'"],
+            ["-","'pivo'","'bergkonig'","'svetlo_pivo_plocevinka'","0.69","'0.5_l'"],
+            ["-","'pivo'","'bergkonig'","'svetlo_pivo_plocevinka'","0.69","'0.5_l'"],
+            ["-","'sok'","'happy_fruits'","'breskva_nektar'","0.69","'1_l'"],
+            ["-","'sok'","'happy_fruits'","'pijaca_iz_breskev'","0.49","'1_l'"],
+            ["-","'sok'","'happy_fruits'","'jegoa_nektar'","1.19","'1.5_l'"],
+            ["-","'sok'","'pure_fruits'","'pomaranca'","0.79","'1_l'"],
+            ["-","'sok'","'happy_fruits'","'jabolko_pomaranca_nektar'","0.79","'1_l'"],
+            ["-","'sok'","'sola'","'ledeni_caj_breskev'","0.94","'1.5_l'"],
             ["-","'energijska_pijaca'","'red_bull'","'navadna'","1.69","'0.355_l'"],
             ["-","'energijska_pijaca'","'red_bull'","'brez_sladkorja'","1.69","'0.355_l'"],
-            ["-","'sadje'","'derby'","'banana'","1.29","'1_kg'"], #to je kul
+            ["-","'sadje'","'derby'","'banana'","1.29","'1_kg'"], 
             ["-","'sadje'","'-'","'melona_galia'","0.99","'1_kg'"],
             ["-","'sadje'","'bio'","'limona'","1.19","'0.3_kg'"],
+            ["-","'sadje'","'-'","'breskce_premium'","2.99","'1_kg'"],
+            ["-","'sadje'","'evrosad'","'jabolka_rdeca_slovenska'","1.99","'2_kg'"],
+            ["-","'sadje'","'-'","'nektarine'","2.99","'1_kg'"],
+            ["-","'sadje'","'-'","'marelice'","2.89","'1_kg'"],
+            ["-","'zelenjava'","'-'","'rdeca_paprika'","1.59","'0.5_kg'"],
+            ["-","'zelenjava'","'-'","'slovenska_solata_kristalka'","0.89","'1_kos'"],
+            ["-","'zelenjava'","'-'","'paradiznik'","1.69","'1_kg'"],
+            ["-","'zelenjava'","'-'","'datljev_paradiznik'","1.99","'0.5_kg'"],
+            ["-","'zelenjava'","'-'","'cebula_bela'","1.69","'1_kg'"],
+            ["-","'zelenjava'","'-'","'cesen'","1.99","'0.4_kg'"],
             ["-","'zelenjava'","'-'","'bucke'","0.99","'1_kg'"],
             ["-","'zelenjava'","'-'","'gobe'","1.19","'0.5_kg'"],
             ["-","'zelenjava'","'-'","'krompir'","1.99","'2_kg'"],
@@ -275,8 +302,19 @@ with open('izdelki_hofer.csv','w',newline='') as fp3:
             ["-","'sladoled'","'grandessa'","'cookie_dough'","2.15","'0.5_l'"],
             ["-","'sladoled'","'grandessa'","'nut_loves_choco'","2.15","'0.5_l'"],
             ["-","'sladoled'","'grandessa'","'caramel_love'","2.15","'0.5_l'"],
+            ["-","'sladoled'","'grandessa'","'vanilija'","2.79","'2_l'"],
+            ["-","'sladoled'","'grandessa'","'jagoda'","2.79","'2_l'"],
+            ["-","'sladoled'","'grandessa'","'cokolada'","2.79","'2_l'"],
+            ["-","'sladoled'","'grandessa'","'pistacija'","2.79","'2_l'"],
+            ["-","'sladoled'","'grandessa'","'lesnik'","2.79","'2_l'"],
+            ["-","'sladoled'","'grandessa'","'piskotek'","2.79","'2_l'"],
             ["-","'cips'","'snack_fun'","'paprika_bazilika'","1.19","'0.13_kg'"],
-            ["-","'smoki'","'smoki'","'party_pack'","1.75","'0.225_l'"]
+            ["-","'cips'","'snack_fun'","'slani_v_tulcu'","0.99","'0.175_kg'"],
+            ["-","'cips'","'snack_fun'","'paprika_v_tulcu'","0.99","'0.175_kg'"],
+            ["-","'cips'","'snack_fun'","'kisla_smetana_v_tulcu'","0.99","'0.175_kg'"],
+            ["-","'cips'","'snack_fun'","'slani_rebrast'","0.87","'0.2_kg'"],
+            ["-","'smoki'","'smoki'","'party_pack'","1.75","'0.225_l'"],
+            ["-","'namaz'","'ferrero'","'nutella'","4.89","'0.7_kg'"]
             ]
     a.writerows(data)
 
@@ -288,14 +326,69 @@ with open('izdelki_lidl.csv','w',newline='') as fp3:
     a = csv.writer(fp3, delimiter=',')
     data = [["'id_izdelka'","'ime_izdelka'","'firma'","'okus'", "'redna_cena'", "'teza'"],
             ["-","'cokolada'","'fin_carre'","'mlecna_z_lesniki'","0.49","'100_g'"],
+            ["-","'cokolada'","'fin_carre'","'bela_cokolada'","1.29","'200_g'"],
+            ["-","'cokolada'","'bellarom'","'temna_cokolada'","0.79","'100_g'"],
+            ["-","'cokolada'","'fin_carre'","'cokolada_s_celimi_lesniki'","0.75","'100_g'"],
+            ["-","'cokolada'","'fin_carre'","'cokolada_s_celimi_lesniki_temna'","0.75","'100_g'"],
+            ["-","'cokolada'","'fin_carre'","'cokolada_s_celimi_lesniki_bela'","0.75","'100_g'"],
+            ["-","'cokolada'","'milka'","'noisette'","2.99","'300_g'"],
+            ["-","'cokolada'","'milka'","'karamela_z_lesniki'","2.99","'300_g'"],
+            ["-","'cokolada'","'milka'","'oreo'","2.99","'300_g'"],
+            ["-","'cokolada'","'milka'","'coko_biskvit'","2.99","'300_g'"],
+            ["-","'cokolada'","'milka'","'celi_lesniki'","2.99","'300_g'"],
+            ["-","'cokolada'","'milka'","'mlecna_cokolada'","1.09","'100_g'"],
             ["-","'mleko'","'lejko_mlejko'","'3,5%'","0.75","'1_l'"],
+            ["-","'mleko'","'nase_nam_pase'","'3,5%'","0.79","'1_l'"],
+            ["-","'mleko'","'alpsko_mleko'","'3,5%'","1.14","'1_l'"],
+            ["-","'mleko'","'pilos'","'1,5%'","0.67","'1_l'"],
+            ["-","'moka'","'belbake'","'tip_400_ostra","0.47","'1_kg'"],
+            ["-","'moka'","'belbake'","'tip_500_gladka","0.47","'1_kg'"],
+            ["-","'moka'","'mlinotest'","'psenicna_moka_gladka","0.57","'1_kg'"],
             ["-","'kruh'","'mlinotest'","'rustikalna_bela_struca'","0.99","'0.4_kg'"],
+            ["-","'kruh'","'hofer'","'hribovc_meseani'","1.59","'0.5_kg'"],
+            ["-","'pivo'","'heineken'","'svetlo_pivo_plocevinka'","1.25","'0.5_l'"],
+            ["-","'pivo'","'lasko'","'brezalkoholno_0.0_plocevinka'","0.99","'0.5_l'"],
+            ["-","'pivo'","'heineken'","'brezalkoholno_0.0_plocevinka'","0.99","'0.33_l'"],
+            ["-","'pivo'","'kozel'","'svetlo_pivo_plocevinka'","1.28","'0.5_l'"],
+            ["-","'pivo'","'staropramen'","'svetlo_pivo_plocevinka'","1.04","'0.5_l'"],
+            ["-","'pivo'","'staropramen'","'temno_pivo_plocevinka'","1.04","'0.5_l'"],
+            ["-","'pivo'","'kozel'","'temno_pivo_plocevinka'","1.28","'0.5_l'"],
+            ["-","'pivo'","'lasko'","'svetlo_pivo_plocevinka'","0.77","'0.5_l'"],
+            ["-","'pivo'","'union'","'svetlo_pivo_plocevinka'","0.77","'0.5_l'"],
             ["-","'pivo'","'deep'","'svetlo_pivo_plocevinka'","0.49","'0.5_l'"],
             ["-","'pivo'","'argus'","'brezalkoholno_plocevinka'","0.49","'0.5_l'"],
             ["-","'sok'","'solevita'","'pomaranca'","1.49","'2_l'"],
+            ["-","'sok'","'lidl'","'jabolko'","0.69","'2_l'"],
+            ["-","'sok'","'lidl'","'pomaranca'","0.79","'2_l'"],
+            ["-","'sok'","'lidl'","'jabolko'","0.62","'1_l'"],
+            ["-","'sok'","'lidl'","'breskev'","0.49","'1_l'"],
+            ["-","'sok'","'solevita'","'breskev_nektar'","0.49","'1_l'"],
+            ["-","'sok'","'sola'","'ledeni_caj_breskev'","0.94","'1.5_l'"],
             ["-","'sadje'","'-'","'lubenica'","0.89","'1_kg'"],
             ["-","'sadje'","'-'","'breskve'","2.49","'1_kg'"],
             ["-","'sadje'","'-'","'slive'","1.99","'1_kg'"],
-            ["-","'sladoled'","'gelatelli'","'bourbon_vanilla'","2.45","'2.5_l'"]
+            ["-","'sadje'","'derby'","'banane'","1.28","'1_kg'"],
+            ["-","'sadje'","'-'","'marelice'","2.49","'1_kg'"],
+            ["-","'sadje'","'-'","'nektarine'","1.99","'1_kg'"],
+            ["-","'zelenjava'","'-'","'kumare'","0.99","'1_kg'"],
+            ["-","'zelenjava'","'-'","'paradiznik'","1.69","'1_kg'"],
+            ["-","'zelenjava'","'-'","'paprika_zelena'","2.49","'1_kg'"],
+            ["-","'zelenjava'","'-'","'paprika_rdeca'","2.49","'1_kg'"],
+            ["-","'zelenjava'","'-'","'cesen'","1.99","'1_kg'"],
+            ["-","'sladoled'","'gelatelli'","'bourbon_vanilla'","2.45","'2.5_l'"],
+            ["-","'sladoled'","'gelatelli'","'pasijonka'","1.99","'1_l'"],
+            ["-","'sladoled'","'gelatelli'","'limona'","1.99","'1_l'"],
+            ["-","'sladoled'","'gelatelli'","'crni_ribez'","1.99","'1_l'"],
+            ["-","'sladoled'","'ljubljanske_mlekarne'","'vanilija_jagoda_cokolada_planica'","2.99","'1_l'"],
+            ["-","'sladoled'","'ljubljanske_mlekarne'","'vanilija_jagoda_cokolada_planica'","2.99","'1_l'"],
+            ["-","'cips'","'snack_day'","'paprika'","0.59","'0.15_kg'"],
+            ["-","'cips'","'snack_day'","'slani'","0.59","'0.15_kg'"],
+            ["-","'cips'","'snack_day'","'paprika_rebrasti'","0.65","'0.15_kg'"],
+            ["-","'cips'","'snack_day'","'slani_rebrasti'","0.65","'0.15_kg'"],
+            ["-","'namaz'","'ferrero'","'nutella'","5.19","'0.75_kg'"]
             ]
     a.writerows(data)
+
+
+
+
