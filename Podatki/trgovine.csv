@@ -1,21 +1,21 @@
-ime_trgovine,lokacija
-spar,Corfe Alley
-spar,Highlands Cliff
-spar,Broad Heights
-spar,Gibson Loke
-spar,Ellicks Close
-mercator,Hornhatch
-mercator,Laburnum Lane
-mercator,Thorpe Leys
-mercator,Waterside Boulevard
-mercator,Millbrook Market
-tus, Beeches Oak
-tus,Priory Crescent
-hofer,Cromer Point
-hofer,Dingle Close
-hofer,Rydal Square
-hofer,Beechcroft Wynd
-lidl,Mount Pleasant Woodlands
-lidl,Priors Bridge
-lidl,Bull Isaf
-lidl,Bernard Fairway
+id_trgovine,ime_trgovine,lokacija
+1,spar,Corfe Alley
+2,spar,Highlands Cliff
+3,spar,Broad Heights
+4,spar,Gibson Loke
+5,spar,Ellicks Close
+6,mercator,Hornhatch
+7,mercator,Laburnum Lane
+8,mercator,Thorpe Leys
+9,mercator,Waterside Boulevard
+10,mercator,Millbrook Market
+11,tus, Beeches Oak
+12,tus,Priory Crescent
+13,hofer,Cromer Point
+14,hofer,Dingle Close
+15,hofer,Rydal Square
+16,hofer,Beechcroft Wynd
+17,lidl,Mount Pleasant Woodlands
+18,lidl,Priors Bridge
+19,lidl,Bull Isaf
+20,lidl,Bernard Fairway
