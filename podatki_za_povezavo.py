@@ -5,3 +5,4 @@ user = "tvoje uporabniško ime"
 password = "tvoje geslo"
 
 #Preden commitaš se prepriči da datoteke conf_baza.py res ni možno commitat!!
+#če ne deluje, conf_baza.py dodaj v datoteko Baza
