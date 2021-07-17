@@ -20,9 +20,9 @@ def ustvari_tabelo_osebe():
         cur.execute("""
             CREATE TABLE IF NOT EXISTS osebe(
               uporanisko_ime TEXT PRIMARY KEY,
-              geslo TEXT NOT NULL
+              geslo TEXT NOT NULL,
               ime TEXT NOT NULL,
-              priimek TEXT NOT NULL,
+              priimek TEXT NOT NULL
               );
         """)
     print("Tabela osebe ustvarjena!")
@@ -34,7 +34,7 @@ def ustvari_tabelo_trgovine():
             CREATE TABLE IF NOT EXISTS trgovine(
               id_trgoine TEXT PRIMARY KEY,
               ime_trgovine TEXT,
-              lokacija TEXT ,
+              lokacija TEXT
               );
         """)
     print("Tabela trgovine ustvarjena!")
@@ -45,7 +45,7 @@ def ustvari_tabelo_vsi_izdelki():
         cur.execute("""
             CREATE TABLE IF NOT EXISTS vsi_izdelki(
               id_izdelka TEXT PRIMARY KEY,
-              ime_trgovine TEXT, #REFERENCES
+              ime_trgovine TEXT, 
               ime_izdelka TEXT ,
               firma TEXT,
               okus TEXT,
@@ -54,3 +54,5 @@ def ustvari_tabelo_vsi_izdelki():
               );
         """)
     print("Tabela vsi_izdelki ustvarjena!")
+
+
