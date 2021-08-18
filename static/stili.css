@@ -1,0 +1,19 @@
+h1 {text-align: center;}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+p {text-align: center;}
+body {
+  background-color: powderblue;
+}
+.prijava-container *{margin:auto;}
+.prijava-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+

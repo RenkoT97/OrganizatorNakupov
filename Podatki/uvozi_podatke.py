@@ -13,8 +13,4 @@ def uvoziSQL(cur, datoteka):
 with sqlite3.connect(baza_datoteka) as baza:
     cur = baza.cursor()
     uvoziSQL(cur, 'vsi_izdelki.sql')
-    uvoziSQL(cur, 'trgovine.sql')
-    uvoziSQL(cur, 'osebe.sql')
-    
-
 # sam mi nč ne piše notri 

@@ -6,23 +6,8 @@ def prijavno_okno():
 <html>
 <head>
 
-<style type="text/css">
-h1 {text-align: center;}
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-p {text-align: center;}
-body {
-  background-color: powderblue;
-}
-.prijava-container *{margin:auto;}
-.prijava-container{
-    display: flex;
-    flex-direction: column;
-}
-</style>
+<link rel="StyleSheet" type="text/css" href="/static/stili.css" />
+
 </head>
 
 <body>
@@ -43,6 +28,16 @@ body {
 </html>
 """
 
+# mapa za statične vire (slike,css, ...)
+static_dir = "./static"
+
+# straženje statičnih datotek 
+@route("/static/<filename:path>")
+def static(filename): 
+    return static_file(filename, root=static_dir)
+
+
+
 # zahtevek POST
 @post('/prijava') # or @route('/prijava', method='POST')
 def prijava():
@@ -60,7 +55,6 @@ def preveri(uime, geslo):
 
 @get("/static/img/<filepath:re:.*\.(jpg|png|gif|ico|svg)>")
 def img(filepath):
-
     return static_file(filepath, root="static/img")
 
 run(host='localhost', port=8080, debug=True)
