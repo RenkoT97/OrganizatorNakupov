@@ -1,26 +1,20 @@
-CREATE TABLE IF NOT EXISTS trgovine (
-    `id_trgovine` INT,
-    `ime_trgovine` VARCHAR(8) CHARACTER SET utf8,
-    `lokacija` VARCHAR(24) CHARACTER SET utf8
-);
-INSERT INTO trgovine VALUES
-    (1,'spar','Corfe Alley'),
-    (2,'spar','Highlands Cliff'),
-    (3,'spar','Broad Heights'),
-    (4,'spar','Gibson Loke'),
-    (5,'spar','Ellicks Close'),
-    (6,'mercator','Hornhatch'),
-    (7,'mercator','Laburnum Lane'),
-    (8,'mercator','Thorpe Leys'),
-    (9,'mercator','Waterside Boulevard'),
-    (10,'mercator','Millbrook Market'),
-    (11,'tus',' Beeches Oak'),
-    (12,'tus','Priory Crescent'),
-    (13,'hofer','Cromer Point'),
-    (14,'hofer','Dingle Close'),
-    (15,'hofer','Rydal Square'),
-    (16,'hofer','Beechcroft Wynd'),
-    (17,'lidl','Mount Pleasant Woodlands'),
-    (18,'lidl','Priors Bridge'),
-    (19,'lidl','Bull Isaf'),
-    (20,'lidl','Bernard Fairway');
+insert into trgovina (id, ime, kraj) values (1,'spar','Corfe Alley');
+insert into trgovina (id, ime, kraj) values (2,'spar','Highlands Cliff');
+insert into trgovina (id, ime, kraj) values (3,'spar','Broad Heights');
+insert into trgovina (id, ime, kraj) values (4,'spar','Gibson Loke');
+insert into trgovina (id, ime, kraj) values (5,'spar','Ellicks Close');
+insert into trgovina (id, ime, kraj) values (6,'mercator','Hornhatch');
+insert into trgovina (id, ime, kraj) values (7,'mercator','Laburnum Lane');
+insert into trgovina (id, ime, kraj) values (8,'mercator','Thorpe Leys');
+insert into trgovina (id, ime, kraj) values (9,'mercator','Waterside Boulevard');
+insert into trgovina (id, ime, kraj) values (10,'mercator','Millbrook Market');
+insert into trgovina (id, ime, kraj) values (11,'tus',' Beeches Oak');
+insert into trgovina (id, ime, kraj) values (12,'tus','Priory Crescent');
+insert into trgovina (id, ime, kraj) values (13,'hofer','Cromer Point');
+insert into trgovina (id, ime, kraj) values (14,'hofer','Dingle Close');
+insert into trgovina (id, ime, kraj) values (15,'hofer','Rydal Square');
+insert into trgovina (id, ime, kraj) values (16,'hofer','Beechcroft Wynd');
+insert into trgovina (id, ime, kraj) values (17,'lidl','Mount Pleasant Woodlands');
+insert into trgovina (id, ime, kraj) values (18,'lidl','Priors Bridge');
+insert into trgovina (id, ime, kraj) values (19,'lidl','Bull Isaf');
+insert into trgovina (id, ime, kraj) values (20,'lidl','Bernard Fairway');
