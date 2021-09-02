@@ -1,4 +1,13 @@
 from bottle import *
+import sqlite3
+
+#KONFIGURACIJA
+baza_datoteka = 'vsi_izdelki.sql'
+
+#Odkomentiraj, če želiš sporočila o napakah 
+debug(True) # za izpise pri razvoju 
+
+
 # zahtevek GET s formo
 @get('/prijava') # lahko tudi @route('/prijava')
 def prijavno_okno():
@@ -57,5 +66,17 @@ def preveri(uime, geslo):
 def img(filepath):
     return static_file(filepath, root="static/img")
 
-run(host='localhost', port=8080, debug=True)
+@get('vsi_izdelki')
 
+
+
+
+
+baza = sqlite3.connect(baza_datoteka, isolation_level=None)
+baza.set_trace_callback(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
+# zapoved upoštevanja omejitev FOREIGN KEY
+cur = baza.cursor()
+cur.execute("PRAGMA foreign_key = ON;")
+
+# reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
+run(host='localhost', port=8080, debug=True)
