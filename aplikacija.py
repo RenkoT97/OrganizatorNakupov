@@ -66,7 +66,7 @@ def preveri(uime, geslo):
 def img(filepath):
     return static_file(filepath, root="static/img")
 
-@get('vsi_izdelki')
+
 
 
 

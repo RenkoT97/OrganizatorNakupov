@@ -1,6 +1,6 @@
 import sqlite3
 
-baza_datoteka = 'vsi_izdelki.db'
+baza_datoteka = 'organizator_nakupov.db'
 
 def uvoziSQL(cur, datoteka):
     with open(datoteka) as f:
