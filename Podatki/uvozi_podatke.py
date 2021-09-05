@@ -13,21 +13,36 @@ CREATE_VSI_IZDELKI = '''
         teza INTEGER
     )
 '''
-        
+      
+CREATE_TRGOVINE = '''
+    CREATE TABLE IF NOT EXISTS trgovina (
+        id INTEGER PRIMARY KEY,
+        ime TEXT NOT NULL,
+        kraj TEXT NOT NULL
+    )
+'''
+
+CREATE_OSEBE = '''
+    CREATE TABLE IF NOT EXISTS osebe (
+        uporabnisko_ime TEXT PRIMARY KEY,
+        geslo TEXT NOT NULL,
+        ime TEXT NOT NULL,
+        priimek TEXT NOT NULL
+    )
+'''
 
 def uvoziSQL(cur, datoteka):
-    with open(datoteka) as f:
-        koda = f.read()
-        print(koda)
-        try:
-            cur.executescript(koda)
-        except sqlite3.OperationalError as error:
-            print('error')
-            print(error)
+    with open(datoteka) as file:
+        for koda in file:
+            #print(koda)
+            cur.execute(koda)
 
 with sqlite3.connect(baza_datoteka) as baza:
     cur = baza.cursor()
     cur.execute(CREATE_VSI_IZDELKI)
+    cur.execute(CREATE_TRGOVINE)
+    cur.execute(CREATE_OSEBE)
     uvoziSQL(cur, 'vsi_izdelki.sql')
-    #uvoziSQL(cur, 'trgovine.sql')
-    #uvoziSQL(cur, 'osebe.sql')
+    uvoziSQL(cur, 'trgovine.sql')
+    uvoziSQL(cur, 'osebe.sql')
+    baza.commit()
