@@ -54,7 +54,7 @@ def img(filepath):
     return static_file(filepath, root="static/img")
 
 @get('/registracija')
-def prijavno_okno():
+def registracijsko_okno():
     return template('registracija.html')
 
 

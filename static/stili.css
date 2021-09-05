@@ -26,7 +26,7 @@ body {
   
 .icon {
     padding: 10px;
-    color: rgb(200, 51, 73);
+    color: rgb(255, 48, 79);
     min-width: 50px;
     text-align: center;
 }
@@ -37,6 +37,20 @@ body {
     text-align: center;
 }
 
+.gumba{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.gumb{
+  background-color: rgb(255, 48, 79);
+  color: white;
+  border-width: 0px;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
 
