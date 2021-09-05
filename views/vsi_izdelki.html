@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>Vsi izdelki</title>
+</head>
+<body>
+    <h2>Vsi izdelki v trgovinah</h2>
+    <table cellpadding="0" cellspacing="0" border="1">
+    <tr>
+        <th>Številka izdelka</th>
+        <th>Trgovina</th>
+        <th>Izdelek</th>
+        <th>Znamka</th>
+        <th>Okus</th>
+        <th>Redna cena</th>
+        <th>Teža</th>
+    </tr>
+    %for (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) in vsi_izdelki: 
+        <tr>
+            <td>{{id_izdelka}}</td>
+            <td>{{ime_trgovine}}</td>
+            <td>{{ime_izdelka}}</td>
+            <td>{{firma}}</td>
+            <td>{{okus}}</td>
+            <td>{{redna_cena}}</td>
+            <td>{{teza}}</td> 
+        </tr>
+    %end
+    </table>
+</body>
+</html>
