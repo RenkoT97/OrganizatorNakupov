@@ -1,0 +1,82 @@
+<html>
+<head>
+<link rel="StyleSheet" type="text/css" href="/static/stili.css" />
+<link rel="stylesheet"
+          href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .input-icons i {
+            position: absolute;
+        }
+          
+        .input-icons {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+          
+        .icon {
+            padding: 10px;
+            color: rgb(200, 51, 73);
+            min-width: 50px;
+            text-align: center;
+        }
+          
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Registracijski obrazec</h1>
+<img src="/static/img/logo.png" alt="logo" width="450" height="450"> 
+<!-- <form action="/prijava" method="post"> </form> --> 
+<center>
+    <form style="max-width:450px;margin:auto" action="/prijava" method="post">
+        <div class="input-icons">
+            <i class="fa fa-user icon">
+          </i>
+            <input class="input-field" 
+                   type="text" 
+                   placeholder="Ime"
+                   name="ime">
+        </div>
+        <div class="input-icons">
+            <i class="fa fa-user icon">
+          </i>
+            <input class="input-field" 
+                   type="text"
+                   placeholder="Priimek"
+                   name="priimek">
+        </div>
+        <div class="input-icons">
+            <i class="fa fa-user icon">
+         </i>
+            <input class="input-field" 
+                    type="text" 
+                    placeholder="Uporabniško ime"
+                    name="uime">
+        </div>
+        <div class="input-icons">
+            <i class="fa fa-key icon">
+          </i>
+            <input class="input-field" 
+                   type="password"
+                   placeholder="Geslo"
+                   name="geslo">
+        </div>
+        <div class="input-icons">
+            <i class="fa fa-key icon">
+          </i>
+            <input class="input-field" 
+                   type="password"
+                   placeholder="Ponovite geslo"
+                   name="geslo">
+        </div>
+        <input value="Registracija" type="submit" />
+    </form>
+    <br>
+</center>
+</body>
+</html>

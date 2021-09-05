@@ -1,3 +1,4 @@
+#from sys import ps1
 from bottle import *
 import sqlite3
 import hashlib
@@ -25,7 +26,7 @@ static_dir = "./static"
 #skrivnost =  <---- to ne vem kaj je
 
 ###################################
-#### PRIJAVA
+#### PRIJAVA in REGISTRACIJA
 ###################################
 
 # zahtevek GET s formo
@@ -52,6 +53,12 @@ def preveri(uime, geslo):
 def img(filepath):
     return static_file(filepath, root="static/img")
 
+@get('/registracija')
+def prijavno_okno():
+    return template('registracija.html')
+
+
+
 ###################################
 #### IZDELKI
 ###################################
@@ -65,7 +72,7 @@ def vsi_izdelki():
 
 # straženje statičnih datotek 
 @route("/static/<filename:path>")
-def static(filename): 
+def static(filename):
     return static_file(filename, root=static_dir)
 
 
