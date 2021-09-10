@@ -1,9 +1,10 @@
 from bottle import *
-import sqlite3
+import psycopg2
 import hashlib
+import sqlite3
 
 #KONFIGURACIJA
-baza_datoteka = 'organizator_nakopov.db'
+baza_datoteka = 'organizator_nakupov.db'
 
 #Odkomentiraj, če želiš sporočila o napakah 
 debug(True) # za izpise pri razvoju 
@@ -55,13 +56,14 @@ def img(filepath):
 ###################################
 #### IZDELKI
 ###################################
-
+'''
 @get('/vsi_izdelki')
-def vsi_izdelki(): 
-    cur = baza.cursor()
+def vsi_izdelki():
+    con = sqlite3.connect(baza_datoteka)
+    cur = con.cursor()
     vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM vsi_izdelki")
-    return template('vsi_izdelki.html', vsi_izdelki = vsi_izdelki)
-
+    return template('vsi_izdelki.html', vsi_izdelki = cur)
+'''
 
 # straženje statičnih datotek 
 @route("/static/<filename:path>")
@@ -69,11 +71,16 @@ def static(filename):
     return static_file(filename, root=static_dir)
 
 
-baza = sqlite3.connect(baza_datoteka, isolation_level=None)
-baza.set_trace_callback(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
+#baza = psycopg2.connect(dbname = baza_datoteka)#, isolation_level=None)
+baza = psycopg2.connect(host = 'baza.fmf.uni-lj.si', dbname='sem2021_tjasar', user='tjasar', password='8um0ucwa')
+#baza.set_trace_callback(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
 # zapoved upoštevanja omejitev FOREIGN KEY
 cur = baza.cursor()
-cur.execute("PRAGMA foreign_key = ON;")
-
+vsi_izdelki = cur.fetchall()
+#cur.execute("PRAGMA foreign_key = ON;")
+#vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM baza_datoteka")
+#vsi_izdelki = cur.execute()
+template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
+#baza.commit()
 # reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
-run(host='localhost', port=8080, debug=True)
+#run(host='localhost', port=8080, debug=True)
