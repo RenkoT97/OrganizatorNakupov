@@ -54,4 +54,6 @@ body {
   display: inline-block;
 }
 
-
+h1.intro {
+  color: blue;
+}
