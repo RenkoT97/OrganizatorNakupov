@@ -79,15 +79,15 @@ def static(filename):
 
 
 #baza = psycopg2.connect(dbname = baza_datoteka)#, isolation_level=None)
-baza = psycopg2.connect(host = 'baza.fmf.uni-lj.si', dbname='sem2021_tjasar', user='', password='')
+#baza = psycopg2.connect(host = 'baza.fmf.uni-lj.si', dbname='sem2021_zanka', user='zanka', password='Slucajne1996')
 #baza.set_trace_callback(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
 # zapoved upoštevanja omejitev FOREIGN KEY
-cur = baza.cursor()
-vsi_izdelki = cur.fetchall()
+#cur = baza.cursor()
+#vsi_izdelki = cur.fetchall()
 #cur.execute("PRAGMA foreign_key = ON;")
 #vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM baza_datoteka")
 #vsi_izdelki = cur.execute()
-template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
+#template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
 #baza.commit()
 # reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
-#run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080, debug=True)
