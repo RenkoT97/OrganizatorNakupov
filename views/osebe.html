@@ -1,0 +1,24 @@
+<html>
+<head>
+    <title>Uporabniki</title>
+</head>
+<body>
+    <h2>Uporabniki portala</h2>
+    <table cellpadding="0" cellspacing="0" border="1">
+    <tr>
+        <th>Uporabniško ime</th>
+        <th>Geslo</th>
+        <th>Ime </th>
+        <th>Priimek</th>
+    </tr>
+    %for (uporabnisko_ime, geslo, ime, priimek) in osebe: 
+        <tr>
+            <td>{{uporabnisko_ime}}</td>
+            <td>{{geslo}}</td>
+            <td>{{ime}}</td>
+            <td>{{priimek}}</td>
+        </tr>
+    %end
+    </table>
+</body>
+</html>

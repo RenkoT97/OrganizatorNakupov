@@ -64,14 +64,28 @@ def registracijsko_okno():
 ###################################
 #### IZDELKI
 ###################################
-'''
+
 @get('/vsi_izdelki')
 def vsi_izdelki():
     con = sqlite3.connect(baza_datoteka)
     cur = con.cursor()
     vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM vsi_izdelki")
     return template('vsi_izdelki.html', vsi_izdelki = cur)
-'''
+
+@get('/osebe')
+def osebe():
+    con = sqlite3.connect(baza_datoteka)
+    cur = con.cursor()
+    osebe = cur.execute("SELECT uporabnisko_ime, geslo, ime, priimek FROM osebe")
+    return template('osebe.html', osebe = cur)
+
+@get('/trgovine')
+def trgovine():
+    con = sqlite3.connect(baza_datoteka)
+    cur = con.cursor()
+    trgovine = cur.execute("SELECT id, ime, kraj FROM trgovine")
+    return template('trgovine.html', osebe = cur)
+
 
 # straženje statičnih datotek 
 @route("/static/<filename:path>")
