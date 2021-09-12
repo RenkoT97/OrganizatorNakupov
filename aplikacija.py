@@ -92,5 +92,6 @@ print(vsi_izdelki.pop())
 template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
 print('tp')
 baza.commit()
+
 # reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
 run(host='localhost', port=8080, debug=True)
