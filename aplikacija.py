@@ -3,6 +3,7 @@ from bottle import *
 import psycopg2
 import hashlib
 import sqlite3
+#import auth_public as auth
 
 #KONFIGURACIJA
 baza_datoteka = 'organizator_nakupov.db'
@@ -78,16 +79,18 @@ def static(filename):
     return static_file(filename, root=static_dir)
 
 
-#baza = psycopg2.connect(dbname = baza_datoteka)#, isolation_level=None)
-baza = psycopg2.connect(host = 'baza.fmf.uni-lj.si', dbname='sem2021_tjasar', user='', password='')
-#baza.set_trace_callback(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
-# zapoved upoštevanja omejitev FOREIGN KEY
+#baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
+   # with psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996") as baza:
+baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996")
+        #baza.set_trace_cal back(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
+        # zapoved upoštevanja omejitev FOREIGN KEY
 cur = baza.cursor()
+print(cur)
+cur.execute("SELECT * FROM vsi_izdelki")
 vsi_izdelki = cur.fetchall()
-#cur.execute("PRAGMA foreign_key = ON;")
-#vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM baza_datoteka")
-#vsi_izdelki = cur.execute()
+print(vsi_izdelki.pop())
 template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
-#baza.commit()
+print('tp')
+baza.commit()
 # reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
-#run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080, debug=True)
