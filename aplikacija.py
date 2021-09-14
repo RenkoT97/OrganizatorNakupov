@@ -8,8 +8,8 @@ import sqlite3
 #KONFIGURACIJA
 baza_datoteka = 'organizator_nakupov.db'
 
-#Odkomentiraj, če želiš sporočila o napakah 
-debug(True) # za izpise pri razvoju 
+#Odkomentiraj, če želiš sporočila o napakah
+debug(True) # za izpise pri razvoju
 
 # napakaSporocilo = None
 
@@ -20,8 +20,8 @@ def nastaviSporocilo(sporocilo = None):
         response.delete_cookie('sporocilo')
     else:
         response.set_cookie('sporocilo', sporocilo, path="/", secret=skrivnost)
-    return staro 
-   
+    return staro
+
 # mapa za statične vire (slike,css, ...)
 static_dir = "./static"
 
@@ -42,14 +42,18 @@ def prijava():
     uime = request.forms.get('uime')
     geslo = request.forms.get('geslo')
     if preveri(uime, geslo):
-        return "<p>Dobrodošel {0}.</p>".format(uime)
+        redirect('/vsi_izdelki')
     else:
         return '''<p>Napačni podatki za prijavo.
 Poskusite <a href="/prijava">še enkrat</a></p>'''
 
 
 def preveri(uime, geslo):
-    return uime=="janez" and geslo=="kranjski"
+    cur = baza.cursor()
+    cur.execute("SELECT * FROM osebe WHERE uporanisko_ime=%s AND geslo=%s", (uime, geslo))
+    result = cur.fetchone()
+
+    return result is not None
 
 @get("/static/img/<filepath:re:.*\.(jpg|png|gif|ico|svg)>")
 def img(filepath):
@@ -59,7 +63,19 @@ def img(filepath):
 def registracijsko_okno():
     return template('registracija.html')
 
-
+@post('/dodaj_registracija')
+def registriraj():
+    ime = request.forms.get('ime')
+    priimek = request.forms.get('priimek')
+    uime  = request.forms.get('uime')
+    geslo = request.forms.get('geslo')
+    ponovno_geslo= request.forms.get('ponovno_geslo')
+    cur = baza.cursor()
+    if geslo == ponovno_geslo:
+        cur.execute("INSERT INTO osebe (uporanisko_ime,geslo,ime,priimek) VALUES (%s,%s,%s,%s)", (uime, geslo, ime, priimek))
+    else:
+        return '''<p>Gesli se ne ujemata.Poskusite <a href="/registracija">še enkrat</a></p>'''
+    redirect('/prijava')
 
 ###################################
 #### IZDELKI
@@ -67,10 +83,39 @@ def registracijsko_okno():
 
 @get('/vsi_izdelki')
 def vsi_izdelki():
-    con = sqlite3.connect(baza_datoteka)
-    cur = con.cursor()
-    vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM vsi_izdelki")
-    return template('vsi_izdelki.html', vsi_izdelki = cur)
+    cur = baza.cursor()
+    cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM vsi_izdelki")
+    return template('vsi_izdelki.html', vsi_izdelki = cur.fetchall())
+
+@post('/vsi_izdelki/search')
+def vsi_izdelki_search():
+    search = request.forms.get('search')
+
+    if len(search) == 0:
+        redirect('/vsi_izdelki')
+
+    cur = baza.cursor()
+    cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM vsi_izdelki " +
+                "WHERE ime_izdelka=%s OR firma=%s OR okus=%s", (search, search, search))
+    return template('vsi_izdelki.html', vsi_izdelki = cur.fetchall())
+
+@post('vsi_izdelki/dodaj')
+def dodaj_izdelke():
+    id_izdelka = request.forms.get('id_izdelka')
+    ime_trgovine = request.forms.get('ime_trgovine')
+    ime_izdelka = request.forms.get('ime_izdelka')
+    firma = request.forms.get('firma')
+    okus = request.forms.get('okus')
+    redna_cena = request.forms.get('redna_cena')
+    teza = request.forms.get('teza')
+    cur = baza.cursor()
+    cur.execute("INSERT INTO vsi_izdelki (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) VALUES (?, ?, ?, ?, ?, ?, ?)", (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza))
+    redirect('/vsi_izdelki')
+
+#@get('/kosarica')
+#def kosarica():
+
+
 
 @get('/osebe')
 def osebe():
@@ -87,15 +132,15 @@ def trgovine():
     return template('trgovine.html', osebe = cur)
 
 
-# straženje statičnih datotek 
+# straženje statičnih datotek
 @route("/static/<filename:path>")
 def static(filename):
     return static_file(filename, root=static_dir)
 
 
 #baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
-   # with psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996") as baza:
-baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996")
+#    with psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996") as baza:
+baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Karigador1996")
         #baza.set_trace_cal back(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
         # zapoved upoštevanja omejitev FOREIGN KEY
 cur = baza.cursor()
@@ -107,5 +152,5 @@ template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
 print('tp')
 baza.commit()
 
-# reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
+# reloader=True nam olajša razvoj (osveževanje sproti - razvoj)
 run(host='localhost', port=8080, debug=True)

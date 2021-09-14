@@ -9,14 +9,15 @@
 <img src="/static/img/logo.png" alt="logo" width="450" height="450"> 
 <!-- <form action="/prijava" method="post"> </form> --> 
 <center>
-    <form style="max-width:450px;margin:auto" action="/prijava" method="post">
+    <form style="max-width:450px;margin:auto" action="/dodaj_registracija" method="post">
         <div class="input-icons">
             <i class="fa fa-user icon">
           </i>
             <input class="input-field" 
                    type="text" 
                    placeholder="Ime"
-                   name="ime">
+                   name="ime"
+                   required>
         </div>
         <div class="input-icons">
             <i class="fa fa-user icon">
@@ -24,7 +25,8 @@
             <input class="input-field" 
                    type="text"
                    placeholder="Priimek"
-                   name="priimek">
+                   name="priimek"
+                   required>
         </div>
         <div class="input-icons">
             <i class="fa fa-user icon">
@@ -32,7 +34,8 @@
             <input class="input-field" 
                     type="text" 
                     placeholder="Uporabniško ime"
-                    name="uime">
+                    name="uime"
+                    required>
         </div>
         <div class="input-icons">
             <i class="fa fa-key icon">
@@ -40,7 +43,8 @@
             <input class="input-field" 
                    type="password"
                    placeholder="Geslo"
-                   name="geslo">
+                   name="geslo"
+                   required>
         </div>
         <div class="input-icons">
             <i class="fa fa-key icon">
@@ -48,7 +52,8 @@
             <input class="input-field" 
                    type="password"
                    placeholder="Ponovite geslo"
-                   name="geslo">
+                   name="ponovno_geslo"
+                   required>
         </div>
         <input value="Registriraj" type="submit" class="gumb" />
     </form>
