@@ -139,8 +139,6 @@ def static(filename):
 
 
 #baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
-#    with psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996") as baza:
-baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Karigador1996")
         #baza.set_trace_cal back(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
         # zapoved upoštevanja omejitev FOREIGN KEY
 cur = baza.cursor()
