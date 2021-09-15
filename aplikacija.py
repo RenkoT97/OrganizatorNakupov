@@ -3,13 +3,14 @@ from bottle import *
 import psycopg2
 import hashlib
 import sqlite3
+from Baza import conf_baza
 #import auth_public as auth
 
 #KONFIGURACIJA
 baza_datoteka = 'organizator_nakupov.db'
 
-#Odkomentiraj, če želiš sporočila o napakah
-debug(True) # za izpise pri razvoju
+#Odkomentiraj, če želiš sporočila o napakah 
+debug(True) # za izpise pri razvoju 
 
 # napakaSporocilo = None
 
@@ -20,8 +21,8 @@ def nastaviSporocilo(sporocilo = None):
         response.delete_cookie('sporocilo')
     else:
         response.set_cookie('sporocilo', sporocilo, path="/", secret=skrivnost)
-    return staro
-
+    return staro 
+   
 # mapa za statične vire (slike,css, ...)
 static_dir = "./static"
 
@@ -52,7 +53,7 @@ def preveri(uime, geslo):
     cur = baza.cursor()
     cur.execute("SELECT * FROM osebe WHERE uporanisko_ime=%s AND geslo=%s", (uime, geslo))
     result = cur.fetchone()
-
+    
     return result is not None
 
 @get("/static/img/<filepath:re:.*\.(jpg|png|gif|ico|svg)>")
@@ -99,21 +100,27 @@ def vsi_izdelki_search():
                 "WHERE ime_izdelka=%s OR firma=%s OR okus=%s", (search, search, search))
     return template('vsi_izdelki.html', vsi_izdelki = cur.fetchall())
 
-@post('vsi_izdelki/dodaj')
-def dodaj_izdelke():
-    id_izdelka = request.forms.get('id_izdelka')
-    ime_trgovine = request.forms.get('ime_trgovine')
-    ime_izdelka = request.forms.get('ime_izdelka')
-    firma = request.forms.get('firma')
-    okus = request.forms.get('okus')
-    redna_cena = request.forms.get('redna_cena')
-    teza = request.forms.get('teza')
-    cur = baza.cursor()
-    cur.execute("INSERT INTO vsi_izdelki (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) VALUES (?, ?, ?, ?, ?, ?, ?)", (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza))
-    redirect('/vsi_izdelki')
+# @post('vsi_izdelki/dodaj')
+# def dodaj_izdelke():
+#     id_izdelka = request.forms.get('id_izdelka')
+#     ime_trgovine = request.forms.get('ime_trgovine')
+#     ime_izdelka = request.forms.get('ime_izdelka')
+#     firma = request.forms.get('firma')
+#     okus = request.forms.get('okus')
+#     redna_cena = request.forms.get('redna_cena')
+#     teza = request.forms.get('teza')
+#     cur = baza.cursor()
+#     cur.execute("INSERT INTO vsi_izdelki (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza))
+#     redirect('/vsi_izdelki')
 
-#@get('/kosarica')
-#def kosarica():
+@post('/dodaj_kosarica')
+def kosarica():
+    kolicina = request.forms.get('kolicina')
+    id_izdelka = request.forms.get('id_izdelka')
+    #kako dobiš uporabnika vn 
+    cur = baza.cursor()
+    cur.execute("INSERT INTO kosarica (id,kolicina,id_izdelka,uporabnik) VALUES (%s,%s,%s,%s)", (neki, kolicina, id_izdelka, neki_neki))
+    redirect('/vsi_izdelki')
 
 
 
@@ -124,21 +131,16 @@ def osebe():
     osebe = cur.execute("SELECT uporabnisko_ime, geslo, ime, priimek FROM osebe")
     return template('osebe.html', osebe = cur)
 
-@get('/trgovine')
-def trgovine():
-    con = sqlite3.connect(baza_datoteka)
-    cur = con.cursor()
-    trgovine = cur.execute("SELECT id, ime, kraj FROM trgovine")
-    return template('trgovine.html', osebe = cur)
 
-
-# straženje statičnih datotek
+# straženje statičnih datotek 
 @route("/static/<filename:path>")
 def static(filename):
     return static_file(filename, root=static_dir)
 
 
 #baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
+   # with psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996") as baza:
+baza = psycopg2.connect(host=conf_baza.host, database=conf_baza.dbname, user=conf_baza.user, password=conf_baza.password)
         #baza.set_trace_cal back(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
         # zapoved upoštevanja omejitev FOREIGN KEY
 cur = baza.cursor()
@@ -150,5 +152,5 @@ template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
 print('tp')
 baza.commit()
 
-# reloader=True nam olajša razvoj (osveževanje sproti - razvoj)
+# reloader=True nam olajša razvoj (osveževanje sproti - razvoj) 
 run(host='localhost', port=8080, debug=True)

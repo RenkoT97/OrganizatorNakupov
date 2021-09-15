@@ -9,16 +9,13 @@
             border-spacing: 1;
             width: 100%;
             border: 1px solid powderblue;
+            background-color: powderblue;
         }
 
         th, td {
             text-align: center;
             padding: 16px;
             border: 1px solid black;
-        }
-
-        tr:nth-child(even) {
-            background-color: powderblue;
         }
     </style>
 </head>
@@ -73,6 +70,7 @@
                     <option value="9">9</option>
                     <option value="10">10</option>
                 </select>
+                <input name="id_izdelka" value="{{id_izdelka}}" type="hidden">
                 <input value="Dodaj v košarico" class="gumb" type="submit">
             </form>
         </td>
