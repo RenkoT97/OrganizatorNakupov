@@ -12,6 +12,7 @@ def izbrisi():
         cur.execute("DROP TABLE IF EXISTS vsi_izdelki CASCADE")
         cur.execute("DROP TABLE IF EXISTS trgovine CASCADE")
         cur.execute("DROP TABLE IF EXISTS osebe CASCADE")
+        cur.execute("DROP TABLE IF EXISTS kosarica CASCADE")
     print("Baza je izbrisana!")
 
 def ustvari_tabelo_osebe():
@@ -55,4 +56,22 @@ def ustvari_tabelo_vsi_izdelki():
         """)
     print("Tabela vsi_izdelki ustvarjena!")
 
+def ustvari_tabelo_kosarica():
+    with psycopg2.connect(conn_string) as con:
+        cur = con.cursor()
+        cur.execute("""
+            CREATE TABLE IF NOT EXISTS kosarica(
+              id_kosarica SERIAL PRIMARY KEY,
+              kolicina INTEGER,
+              id_uporabnik TEXT,
+              id_izdelek INTEGER 
+              );
+        """)
+    print("Tabela kosarica ustvarjena!")
 
+if __name__ == '__main__':
+    # ustvari_tabelo_osebe()
+    ustvari_tabelo_vsi_izdelki()
+    ustvari_tabelo_trgovine()
+    # izbrisi()
+    # ustvari_tabelo_kosarica()

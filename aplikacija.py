@@ -113,14 +113,20 @@ def vsi_izdelki_search():
 #     cur.execute("INSERT INTO vsi_izdelki (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) VALUES (%s, %s, %s, %s, %s, %s, %s)", (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza))
 #     redirect('/vsi_izdelki')
 
+@get('/kosarica')
+def kosarica(): 
+    return template('kosarica.html')
+
 @post('/dodaj_kosarica')
-def kosarica():
+def dodaj_kosarica():
     kolicina = request.forms.get('kolicina')
     id_izdelka = request.forms.get('id_izdelka')
-    #kako dobiš uporabnika vn 
+    #uporabnik = request.forms.get('uporabnik')
+    #
+    #kako dobiš uporabnika vn --> nekak si ga shran 
     cur = baza.cursor()
     cur.execute("INSERT INTO kosarica (id,kolicina,id_izdelka,uporabnik) VALUES (%s,%s,%s,%s)", (neki, kolicina, id_izdelka, neki_neki))
-    redirect('/vsi_izdelki')
+    return template('kosarica.html')
 
 
 
@@ -130,7 +136,6 @@ def osebe():
     cur = con.cursor()
     osebe = cur.execute("SELECT uporabnisko_ime, geslo, ime, priimek FROM osebe")
     return template('osebe.html', osebe = cur)
-
 
 # straženje statičnih datotek 
 @route("/static/<filename:path>")
