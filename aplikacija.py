@@ -2,8 +2,8 @@
 from bottle import *
 
 # uvozimo ustrezne podatke za povezavo
-#import auth_public as auth 
-from Baza import conf_baza as auth
+import auth_public as auth 
+#from Baza import conf_baza as auth
 
 # uvozimo psycopg2
 import psycopg2, psycopg2.extensions, psycopg2.extras
