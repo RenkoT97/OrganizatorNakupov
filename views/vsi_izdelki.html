@@ -2,6 +2,8 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/stili.css"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <style>
         .tabela-artiklov {
@@ -19,63 +21,69 @@
         }
     </style>
 </head>
-<body>
-<img src="/static/img/logo.png" alt="logo" width="75" height="75">
-<h2>Začnite nakupovati</h2>
+<body style="background-color: powderblue;">
+    <nav class="navbar navbar-light" style="background-color: powderblue;">
+        <div class="container">
+            <a class="gumb" href="/vsi_izdelki" >Izbiraj</a>
+            <a class="gumb" href="/kosarica" > Košarica </a>
+            <a class="gumb" href="/link" > Potrdi in izračunaj </a>
+            <a class="gumb" href="/odjava"  >Odjava</a>
+        </div>                        
+    </nav>
+    <!-- <img src="/static/img/logo.png" alt="logo" width="75" height="75"> -->
+    <h2>Začnite nakupovati</h2>
 
-<div class="vodoravno">
-    <div class="topnav">
-        <div class="search-container">
-            <form action="/vsi_izdelki/search" method="post">
-                <input type="text" placeholder="Išči..." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
+    <div class="vodoravno">
+        <div class="topnav">
+            <div class="search-container">
+                <form action="/vsi_izdelki/search" method="post">
+                    <input type="text" placeholder="Išči..." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         </div>
+        <a href='/kosarica' class="gumb" >
+            Košarica
+        </a>
     </div>
-    <a href='/kosarica' class="gumb" >
-        Košarica
-    </a>
-</div>
-<table class="tabela-artiklov">
-    <tr>
-        <!-- <th>Številka izdelka</th>-->
-        <!-- <th>Trgovina</th>-->
-        <th>Izdelek</th>
-        <th>Znamka</th>
-        <th>Okus</th>
-        <!--  <th>Redna cena</th>-->
-        <th>Teža</th>
-        <th>Dodaj količino</th>
-    </tr>
-    %for (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) in vsi_izdelki:
-    <tr>
-        <!--  <td>{{id_izdelka}}</td>-->
-        <!--  <td>{{ime_trgovine}}</td>-->
-        <td>{{ime_izdelka}}</td>
-        <td>{{firma}}</td>
-        <td>{{okus}}</td>
-        <!--  <td>{{redna_cena}}</td>-->
-        <td>{{teza}}</td>
-        <td>
-            <form action="/kosarica" method="post">
-                <select id="kolicina" class="gumb" name="kolicina">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-                <input name="id_izdelka" value="{{id_izdelka}}" type="hidden">
-                <input value="Dodaj v košarico" class="gumb" type="submit">
-            </form>
-        </td>
-    </tr>
-    %end
-</table>
+    <table class="tabela-artiklov">
+        <tr>
+            <th>Izdelek</th>
+            <th>Znamka</th>
+            <th>Okus</th>
+            <th>Teža</th>
+            <th>Cena (€)</th>
+            <th>Dodaj količino</th>
+        </tr>
+        %for (id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza) in vsi_izdelki:
+        <tr>
+            <!--  <td>{{id_izdelka}}</td>-->
+            <!--  <td>{{ime_trgovine}}</td>-->
+            <td>{{ime_izdelka}}</td>
+            <td>{{firma}}</td>
+            <td>{{okus}}</td>
+            <td>{{teza}}</td>
+            <td>{{redna_cena}}</td>
+            <td>
+                <form action="/kosarica" method="post">
+                    <select id="kolicina" class="gumb" name="kolicina">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input name="id_izdelka" value="{{id_izdelka}}" type="hidden">
+                    <input value="Dodaj v košarico" class="gumb" type="submit">
+                </form>
+            </td>
+        </tr>
+        %end
+    </table>
 </body>
 </html>

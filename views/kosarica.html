@@ -2,6 +2,8 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/static/stili.css"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <style>
         .tabela-artiklov {
@@ -19,24 +21,32 @@
         }
     </style>
 </head>
-<body>
-<img src="/static/img/logo.png" alt="logo" width="75" height="75">
-<h2>Košarica</h2>
+<body style="background-color: powderblue;">
+    <nav class="navbar navbar-light" style="background-color: powderblue;">
+        <div class="container">
+            <a class="gumb" href="/vsi_izdelki" >Izbiraj</a>
+            <a class="gumb" href="/kosarica" > Košarica </a>
+            <a class="gumb" href="/link" > Potrdi in izračunaj </a>
+            <a class="gumb" href="/odjava"  >Odjava</a>
+        </div>                        
+    </nav>
+    <!-- <img src="/static/img/logo.png" alt="logo" width="75" height="75"> -->
+    <h2>Košarica</h2>
 
-<table class="tabela-artiklov">
-    <tr>
-        <th>ID</th>
-        <th>Ime izdelka</th>
-        <th>Količina</th>
-    </tr>
-    %for (id_izdelka, kolicina, ime_izdelka) in kosarica:
-    <tr>
-        <td>{{id_izdelka}}</td>
-        <td>{{ime_izdelka}}</td>
-        <td>{{kolicina}}</td>
-    </tr>
-    %end
-</table>
-<a class="gumb" href="/link" style="float:right" > Potrdi in izračunaj </a>
+    <table class="tabela-artiklov">
+        <tr>
+            <th>ID</th>
+            <th>Ime izdelka</th>
+            <th>Količina</th>
+        </tr>
+        %for (id_izdelka, kolicina, ime_izdelka) in kosarica:
+        <tr>
+            <td>{{id_izdelka}}</td>
+            <td>{{ime_izdelka}}</td>
+            <td>{{kolicina}}</td>
+        </tr>
+        %end
+    </table>
+    <a class="gumb" href="/link" style="float:right" > Potrdi in izračunaj </a>
 </body>
 </html>
