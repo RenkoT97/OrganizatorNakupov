@@ -3,6 +3,7 @@ from bottle import *
 import psycopg2
 import hashlib
 import sqlite3
+from Baza import conf_baza
 #import auth_public as auth
 
 #KONFIGURACIJA
@@ -69,7 +70,7 @@ def registracijsko_okno():
 def vsi_izdelki():
     con = sqlite3.connect(baza_datoteka)
     cur = con.cursor()
-    vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM vsi_izdelki")
+    vsi_izdelki = cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM izdelki")
     return template('vsi_izdelki.html', vsi_izdelki = cur)
 
 @get('/osebe')
@@ -95,7 +96,7 @@ def static(filename):
 
 #baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
    # with psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996") as baza:
-baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Slucajne1996")
+baza = psycopg2.connect(host=conf_baza.host, database=conf_baza.dbname, user=conf_baza.user, password=conf_baza.password)
         #baza.set_trace_cal back(print) #kakšne SQL stavke pošilja nazaj - izpis SQL stavkov (za debugiranje pri razvoju)
         # zapoved upoštevanja omejitev FOREIGN KEY
 cur = baza.cursor()

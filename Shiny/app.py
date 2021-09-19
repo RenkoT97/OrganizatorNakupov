@@ -5,18 +5,25 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from plotly.tools import mpl_to_plotly
 import plotly.graph_objects as gobject
+import dash_html_components as html
+import izracuni
+import podatki
 
 app = dash.Dash()
 colors = {
-    'background': '#FFFFFF',
-    'text': '#b83d57'
+    'background': 'powderblue',
+    'text': 'rgb(255,48,79)'
 }
 
 #zgled
-koordinate = [(1,1), (2,5), (7,3), (-3,4), (2,3), (7,8)]
-pot = [(1,1), (2,5), (7,3), (1,1)] #cikel: zaporedna vozlisca
-trgovine = ["dom", "lidl", "tus", "hofer", "spar", "tus"]
-izdelki = [['spar', ['cokolada', 'marcipan', 'maslo']], ['lidl', ['mleko']], ['tus', ['kruh', 'kvas']]]
+dom = izracuni.dom
+koordinate = podatki.koordinate
+koordinate.append(dom)
+
+
+pot = izracuni.pot
+trgovine = ['spar', 'spar', 'spar', 'spar', 'spar', 'mercator', 'mercator', 'mercator', 'mercator', 'mercator', 'tus', 'tus', 'hofer', 'hofer', 'hofer', 'hofer', 'lidl', 'lidl', 'lidl', 'lidl', 'dom']
+izdelki = izracuni.razpredelnica
 
 def graf(koordinate, pot, trgovine):
     x_koor = [k[0] for k in koordinate]
@@ -37,12 +44,12 @@ def graf(koordinate, pot, trgovine):
     showlegend=False,
     hoverinfo='none',
     marker=dict(
-        color='pink',
+        color='rgb(255,48,79)',
         size=50,
-        line=dict(color='black', width=1)))
+        line=dict(color='slategrey', width=1)))
     
-    layout = dict(plot_bgcolor='antiquewhite',
-                  paper_bgcolor='white',
+    layout = dict(plot_bgcolor='powderblue',
+                  paper_bgcolor='powderblue',
                   margin=dict(t=10, b=10, l=10, r=10, pad=0),
                   xaxis=dict(linecolor='black',
                              showgrid=False,
@@ -56,18 +63,55 @@ def graf(koordinate, pot, trgovine):
     fig = gobject.Figure(data=[robovi, vozlisca], layout=layout)
     return fig
 
+def cena(nakup):
+    return podatki.skupna_cena
+
+def razdalja(nakup):
+    return podatki.razdalja(nakup)
+
+def kilometri(stevilo):
+    if stevilo == 1:
+        return 'kilometer'
+    elif stevilo == 2:
+        return 'kilometra'
+    elif stevilo == 3 or stevilo == 4:
+        return 'kilometre'
+    else:
+        return 'kilometrov'
+
+def text(cena_nakupa, razdalja, kilometri):
+    return """Za želen nakup boste zapravili {cena}€. Pri nakupovanju boste prevozili {stevilo} {km}.
+Spodaj lahko vidite pot nakupa ter seznam izdelkov, ki ga morate kupiti v posamezni trgovini.""".format(cena = cena_nakupa, stevilo = razdalja, km = kilometri)
+
 #izdelki je slovar, kjer ima vsaka trgovina seznam izdelkov
 
 def tabela(izdelki):
-    fig = gobject.Figure(data=[gobject.Table(header=dict(values=[el[0] for el in izdelki],
-            line_color='darkslategray', fill_color='wheat'),
+    data=[gobject.Table(header=dict(values=[el[0] for el in izdelki],
+            line_color='darkslategray', fill_color='rgb(139, 212, 218)'), #176,224,230
                  cells=dict(values=[el[1] for el in izdelki], line_color='darkslategray',
-               fill_color='antiquewhite'))])
+               fill_color='powderblue'))]
+    layout = gobject.Layout(
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)'
+)
+    fig = gobject.Figure(data, layout)
     return fig
-   
+
+nakup = []
+cena_nakupa = cena(nakup)
+razdalja = razdalja(pot)
+kilometri = kilometri(razdalja)
+pot = izracuni.pot
 
 app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id = 'parent',
                            children = [
+    dash.html.Div([
+    dash.html.H1(id = 'H0', children = 'Podatki o nakupu', style = {'textAlign':'center',
+                                                         'color': colors['text'],
+                                                        'marginTop':0,'marginBottom':40}),
+        
+        html.P(text(cena_nakupa, razdalja, kilometri))
+    ]),
     dash.html.Div([
     dash.html.H1(id = 'H1', children = 'Načrt poti', style = {'textAlign':'center',
                                                          'color': colors['text'],
@@ -77,7 +121,6 @@ app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id =
     ]),
 
     dash.html.Div([
-        
     dash.html.H1(id = 'H2', children = 'Razpredelnica izdelkov', style = {'textAlign':'center',
                                                          'color': colors['text'],
                                                         'marginTop':40,'marginBottom':40}),
