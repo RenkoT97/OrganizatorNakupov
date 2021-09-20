@@ -24,6 +24,7 @@ koordinate.append(dom)
 pot = izracuni.pot
 trgovine = ['spar', 'spar', 'spar', 'spar', 'spar', 'mercator', 'mercator', 'mercator', 'mercator', 'mercator', 'tus', 'tus', 'hofer', 'hofer', 'hofer', 'hofer', 'lidl', 'lidl', 'lidl', 'lidl', 'dom']
 izdelki = izracuni.razpredelnica
+kolicine = podatki.kolicine
 
 def graf(koordinate, pot, trgovine):
     x_koor = [k[0] for k in koordinate]
@@ -67,7 +68,7 @@ def cena(nakup):
     return podatki.skupna_cena
 
 def razdalja(nakup):
-    return podatki.razdalja(nakup)
+    return round(podatki.razdalja(nakup),2)
 
 def kilometri(stevilo):
     if stevilo == 1:
@@ -80,7 +81,7 @@ def kilometri(stevilo):
         return 'kilometrov'
 
 def text(cena_nakupa, razdalja, kilometri):
-    return """Za želen nakup boste zapravili {cena}€. Pri nakupovanju boste prevozili {stevilo} {km}.
+    return """Za zelen nakup boste zapravili {cena}€. Pri nakupovanju boste prevozili {stevilo} {km}.
 Spodaj lahko vidite pot nakupa ter seznam izdelkov, ki ga morate kupiti v posamezni trgovini.""".format(cena = cena_nakupa, stevilo = razdalja, km = kilometri)
 
 #izdelki je slovar, kjer ima vsaka trgovina seznam izdelkov
@@ -96,6 +97,18 @@ def tabela(izdelki):
 )
     fig = gobject.Figure(data, layout)
     return fig
+
+def tabela2(kolicine):
+    data2=[gobject.Table(header=dict(values=[el[0] for el in kolicine],
+            line_color='darkslategray', fill_color='rgb(139, 212, 218)'), #176,224,230
+                 cells=dict(values=[el[1] for el in kolicine], line_color='darkslategray',
+               fill_color='powderblue'))]
+    layout2 = gobject.Layout(
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)'
+)
+    fig2 = gobject.Figure(data2, layout2)
+    return fig2
 
 nakup = []
 cena_nakupa = cena(nakup)
@@ -113,7 +126,7 @@ app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id =
         html.P(text(cena_nakupa, razdalja, kilometri))
     ]),
     dash.html.Div([
-    dash.html.H1(id = 'H1', children = 'Načrt poti', style = {'textAlign':'center',
+    dash.html.H1(id = 'H1', children = 'Nacrt poti', style = {'textAlign':'center',
                                                          'color': colors['text'],
                                                         'marginTop':40,'marginBottom':40}),
         
@@ -126,8 +139,14 @@ app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id =
                                                         'marginTop':40,'marginBottom':40}),
         
         dash.dcc.Graph(id = 'line_pl', figure = tabela(izdelki))
+    ]),
+    dash.html.Div([
+    dash.html.H1(id = 'H3', children = 'Razpredelnica kolicin', style = {'textAlign':'center',
+                                                         'color': colors['text'],
+                                                        'marginTop':40,'marginBottom':40}),
+        
+        dash.dcc.Graph(id = 'line_pl2', figure = tabela2(kolicine))
     ])
-
 
     ])
 

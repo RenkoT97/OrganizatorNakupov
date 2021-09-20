@@ -4,7 +4,7 @@ import random
 import sys
 from pathlib import Path
 sys.path.append(str(Path().cwd().parent))
-import auth_public as auth
+import auth
 #from Baza import conf_baza
 #Rabiš:
 #za vsako trgovino seznam izdelkov
@@ -106,6 +106,15 @@ def id_izdelka_v_opis(baza):
             izdelki[i][j] = a
     return izdelki
 
+def tabela_kolicin(kosarica):
+    izdelek = []
+    kolicina = []
+    for el in kosarica:
+        izdelek.append(el[3])
+        kolicina.append(el[1])
+    tabela = [['izdelek', izdelek], ['kolicina', kolicina]]
+    return tabela
+
 
 baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
 
@@ -121,4 +130,5 @@ trgovine, koordinate = pretvornik_trgovin_v_koordinate(baza, slovar_koordinat)
 trgovine_z_izdelki = trgovine_z_izdelki_f(baza)
 kosarica = preberi_kosarico(baza, oseba)
 skupna_cena = cena(cene(baza),kosarica)
+kolicine = tabela_kolicin(kosarica)
 baza.commit()
