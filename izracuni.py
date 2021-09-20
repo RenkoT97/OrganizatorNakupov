@@ -130,7 +130,7 @@ def razporeditev(obiskane_trgovine, izdelki, slovar):
     razporeditev = []
     for trgovina in obiskane_trgovine:
         sez = []
-        for izdelek in izdelki2:
+        for izdelek in izdelki:
             if {izdelek}.issubset(slovar[trgovina]):
                 izd = podatki.id_izdelka_v_opis(baza)[izdelek-1]
                 sez.append(izd)
