@@ -21,13 +21,26 @@
         }
     </style>
 </head>
-
 <body style="background-color: powderblue;">
+
+    <script>
+        function goPython(){
+            $.ajax({
+              url: "app.py",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');;
+            });
+        }
+    </script>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <nav class="navbar navbar-light" style="background-color: powderblue;">
+        
         <div class="container">
             <a class="gumb" href="/vsi_izdelki" >Izbiraj</a>
-            <a class="gumb" href="/kosarica" > Košarica </a>           
-            <a class="gumb" href="http://192.168.1.12:8050/" > Potrdi in izračunaj </a>
+            <a class="gumb" href="/kosarica" > Košarica </a> 
+            <a class="gumb" onclick="goPython()" > Zaženi </a>        
+            <a class="gumb" href="http://192.168.1.12:8050/"> Potrdi in izračunaj </a>
             <a class="gumb" href="/odjava"  >Odjava</a>
         </div>                        
     </nav>
