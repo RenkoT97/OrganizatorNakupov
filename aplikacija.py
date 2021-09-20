@@ -11,6 +11,7 @@ psycopg2.extensions.register_type(psycopg2.extensions.UNICODE) # se znebimo prob
 
 import hashlib
 import sqlite3
+import runpy
 
 
 #KONFIGURACIJA
@@ -183,6 +184,25 @@ def static(filename):
 @get("/static/img/<filepath:re:.*\.(jpg|png|gif|ico|svg)>")
 def img(filepath):
     return static_file(filepath, root="static/img")
+
+########################################
+##### redirect
+########################################
+
+import sys
+#from pathlib import Path
+#sys.path.append(str(Path().cwd().Shiny))
+import izracuni
+import podatki
+from app import *
+
+
+@get('/odpri')
+def odpri():
+    exec(open("app.py").read())
+    redirect('/vsi_izdelki')
+
+
 
 ########################################
 ##### ODJAVA
