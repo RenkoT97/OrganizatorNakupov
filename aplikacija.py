@@ -201,5 +201,5 @@ def odjava():
 baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
 baza.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
 
-#Poženemo strežnik na podani vratih, npr. http://localhost:8080/
+#Poženemo strežnik na podanih vratih, npr. http://localhost:8080/
 run(host='localhost', port=SERVER_PORT, reloader=RELOADER)

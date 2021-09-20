@@ -1,6 +1,10 @@
 import psycopg2
 import math
 import random
+import sys
+from pathlib import Path
+sys.path.append(str(Path().cwd().parent))
+import auth
 #from Baza import conf_baza
 #Rabiš:
 #za vsako trgovino seznam izdelkov
@@ -86,7 +90,7 @@ def cena(cene, kosarica):
         kolicina = vrstica[1]
         cena = cene[idi-1][1]
         skupna_cena += kolicina * cena
-    return skupna_cena
+    return round(skupna_cena,2)
     
 def id_izdelka_v_opis(baza):
     #vsaka trgovina ima svoj list izdelkov
@@ -103,10 +107,7 @@ def id_izdelka_v_opis(baza):
     return izdelki
 
 
-#print(vsi_izdelki.pop())
-#template('vsi_izdelki.html', vsi_izdelki=vsi_izdelki)
-
-baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Sonce1996")
+baza = psycopg2.connect(database=auth.dbname, host=auth.host, user=auth.user, password=auth.password)
 
 slovar_koordinat = {'Corfe Alley' : [0,0], 'Highlands Cliff' : [25,8], 'Broad Heights' : [15,30], 'Gibson Loke' : [52,3],
                     'Ellicks Close' : [45,30], 'Hornhatch' : [4, 38], 'Laburnum Lane' : [30, 32], 'Thorpe Leys' : [10, 15],

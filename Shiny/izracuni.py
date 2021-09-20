@@ -4,8 +4,7 @@ import math
 import psycopg2
 import podatki
 
-baza = psycopg2.connect(host="baza.fmf.uni-lj.si", database="sem2021_zanka", user="zanka", password="Sonce1996")
-
+baza = podatki.baza
 dom = podatki.preberi_lokacijo()
 seznam_trgovin =["spar", "mercator", "tus", "hofer", "lidl"]
 id_in_opis = podatki.id_izdelka_v_opis(baza) #[(1, 'cokolada'), ...]

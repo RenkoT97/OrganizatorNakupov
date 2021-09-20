@@ -5,7 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from plotly.tools import mpl_to_plotly
 import plotly.graph_objects as gobject
-import dash_html_components as html
+from dash import html
 import izracuni
 import podatki
 
@@ -131,7 +131,7 @@ app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id =
 
     ])
 
-
+print('ex')
 if __name__ == '__main__':
     app.run_server(host='0.0.0.0', port=8050, debug=False)
 
