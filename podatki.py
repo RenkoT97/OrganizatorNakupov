@@ -4,7 +4,7 @@ import random
 import sys
 from pathlib import Path
 sys.path.append(str(Path().cwd().parent))
-import auth
+import auth_public as auth
 #from Baza import conf_baza
 #Rabiš:
 #za vsako trgovino seznam izdelkov
@@ -59,10 +59,11 @@ def trgovine_z_izdelki_f(baza):
         slovar[par[1]].append(par[0])
     return slovar
 
-def preberi_kosarico(baza, oseba):
+def preberi_kosarico(baza, idk):
     cur = baza.cursor()
-    cur.execute(f"SELECT * FROM kosarica WHERE id_uporabnik={oseba}")
+    cur.execute(f"SELECT * FROM kosarica WHERE id_kosarice={idk}")
     kosarice = cur.fetchall()
+    print(kosarice)
     return kosarice  
 
 def preberi_lokacijo():
@@ -128,7 +129,8 @@ slovar_koordinat = {'Corfe Alley' : [0,0], 'Highlands Cliff' : [25,8], 'Broad He
 oseba = pridobi_uporabnika()
 trgovine, koordinate = pretvornik_trgovin_v_koordinate(baza, slovar_koordinat)
 trgovine_z_izdelki = trgovine_z_izdelki_f(baza)
-kosarica = preberi_kosarico(baza, oseba)
+idk = pridobi_id_kosarice(oseba)
+kosarica = preberi_kosarico(baza, idk)
 skupna_cena = cena(cene(baza),kosarica)
 kolicine = tabela_kolicin(kosarica)
 baza.commit()
