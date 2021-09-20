@@ -59,12 +59,21 @@ def trgovine_z_izdelki_f(baza):
         slovar[par[1]].append(par[0])
     return slovar
 
-def preberi_kosarico(baza, idk):
+def preberi_kosarico(baza, oseba):
     cur = baza.cursor()
-    cur.execute(f"SELECT * FROM kosarica WHERE id_kosarice={idk}")
+    cur.execute(f"SELECT * FROM kosarica")# WHERE id_kosarice={idk}")
     kosarice = cur.fetchall()
     print(kosarice)
-    return kosarice  
+    kos = []
+    while kosarice:
+        a = kosarice.pop()
+        print(a)
+        if a[2] == oseba:
+            print(oseba)
+            kos.append(a)
+        else:
+            return kos       
+    return kos  
 
 def preberi_lokacijo():
     x = random.randint(-1,61)
@@ -130,7 +139,7 @@ oseba = pridobi_uporabnika()
 trgovine, koordinate = pretvornik_trgovin_v_koordinate(baza, slovar_koordinat)
 trgovine_z_izdelki = trgovine_z_izdelki_f(baza)
 idk = pridobi_id_kosarice(oseba)
-kosarica = preberi_kosarico(baza, idk)
+kosarica = preberi_kosarico(baza, oseba)
 skupna_cena = cena(cene(baza),kosarica)
 kolicine = tabela_kolicin(kosarica)
 baza.commit()
