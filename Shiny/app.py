@@ -22,7 +22,7 @@ koordinate.append(dom)
 
 
 pot = izracuni.pot
-trgovine = ['spar', 'spar', 'spar', 'spar', 'spar', 'mercator', 'mercator', 'mercator', 'mercator', 'mercator', 'tus', 'tus', 'hofer', 'hofer', 'hofer', 'hofer', 'lidl', 'lidl', 'lidl', 'lidl', 'dom']
+trgovine = ['spar', 'spar', 'spar', 'spar', 'spar', 'mercator', 'mercator', 'mercator', 'mercator', 'mercator', 'tus', 'tus', 'hofer', 'hofer', 'hofer', 'hofer', 'lidl', 'lidl', 'lidl', 'lidl', 'trenutna lokacija']
 izdelki = izracuni.razpredelnica
 kolicine = podatki.kolicine
 
@@ -136,14 +136,14 @@ app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id =
     dash.html.Div([
     dash.html.H1(id = 'H2', children = 'Razpredelnica izdelkov', style = {'textAlign':'center',
                                                          'color': colors['text'],
-                                                        'marginTop':40,'marginBottom':40}),
+                                                        'marginTop':40,'marginBottom':0}),
         
         dash.dcc.Graph(id = 'line_pl', figure = tabela(izdelki))
     ]),
     dash.html.Div([
     dash.html.H1(id = 'H3', children = 'Razpredelnica kolicin', style = {'textAlign':'center',
                                                          'color': colors['text'],
-                                                        'marginTop':40,'marginBottom':40}),
+                                                        'marginTop':0,'marginBottom':0}),
         
         dash.dcc.Graph(id = 'line_pl2', figure = tabela2(kolicine))
     ])

@@ -4,7 +4,7 @@ import random
 import sys
 from pathlib import Path
 sys.path.append(str(Path().cwd().parent))
-import auth
+import auth_public as auth
 #from Baza import conf_baza
 #Rabiš:
 #za vsako trgovino seznam izdelkov
@@ -61,9 +61,19 @@ def trgovine_z_izdelki_f(baza):
 
 def preberi_kosarico(baza, oseba):
     cur = baza.cursor()
-    cur.execute(f"SELECT * FROM kosarica WHERE id_uporabnik={oseba}")
+    cur.execute(f"SELECT * FROM kosarica")# WHERE id_kosarice={idk}")
     kosarice = cur.fetchall()
-    return kosarice  
+    print(kosarice)
+    kos = []
+    while kosarice:
+        a = kosarice.pop()
+        print(a)
+        if a[2] == oseba:
+            print(oseba)
+            kos.append(a)
+        else:
+            return kos       
+    return kos  
 
 def preberi_lokacijo():
     x = random.randint(-1,61)
@@ -106,11 +116,20 @@ def id_izdelka_v_opis(baza):
             izdelki[i][j] = a
     return izdelki
 
-def tabela_kolicin(kosarica):
+def pretvornik_za_tabelo_kolicin(baza):
+    slovar = {}
+    cur = baza.cursor()
+    cur.execute("SELECT id_izdelka, ime_izdelka FROM izdelki")
+    izdelki = cur.fetchall()
+    for el in izdelki:
+        slovar[el[0]] = el[1]
+    return slovar
+
+def tabela_kolicin(kosarica, slovar):
     izdelek = []
     kolicina = []
     for el in kosarica:
-        izdelek.append(el[3])
+        izdelek.append(slovar.get(el[3]))
         kolicina.append(el[1])
     tabela = [['izdelek', izdelek], ['kolicina', kolicina]]
     return tabela
@@ -125,10 +144,12 @@ slovar_koordinat = {'Corfe Alley' : [0,0], 'Highlands Cliff' : [25,8], 'Broad He
                     'Beechcroft Wynd' : [42,10], 'Mount Pleasant Woodlands' : [35,22], 'Priors Bridge' : [18,30],
                     'Bull Isaf' : [31,19], 'Bernard Fairway' : [55,27]}
 
+slovar_za_tabelo_kolicin = pretvornik_za_tabelo_kolicin(baza)
 oseba = pridobi_uporabnika()
 trgovine, koordinate = pretvornik_trgovin_v_koordinate(baza, slovar_koordinat)
 trgovine_z_izdelki = trgovine_z_izdelki_f(baza)
+idk = pridobi_id_kosarice(oseba)
 kosarica = preberi_kosarico(baza, oseba)
 skupna_cena = cena(cene(baza),kosarica)
-kolicine = tabela_kolicin(kosarica)
+kolicine = tabela_kolicin(kosarica, slovar_za_tabelo_kolicin)
 baza.commit()
