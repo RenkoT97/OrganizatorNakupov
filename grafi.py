@@ -118,10 +118,10 @@ pot = izracuni.pot
 
 
 figure1 = graf(koordinate, pot, trgovine)
-figure1.write_image("slike/fig1.svg")
+figure1.write_image("static/img/fig1.png")
 
 figure2 = tabela(izdelki)
-figure2.write_image("slike/fig2.svg")
+figure2.write_image("static/img/fig2.png")
 
 figure3 = tabela2(kolicine)
-figure3.write_image("slike/fig3.svg")
+figure3.write_image("static/img/fig3.png")
