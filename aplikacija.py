@@ -197,10 +197,15 @@ import podatki
 from app import *
 
 
-@get('/odpri')
-def odpri():
-    exec(open("app.py").read())
-    redirect('/vsi_izdelki')
+#@get('/odpri')
+#def odpri():
+#    exec(open("app.py").read())
+#    redirect('/vsi_izdelki')
+
+@get('/potrdi')
+def potrdi(): 
+    return template('potrdi.html')
+    
 
 
 

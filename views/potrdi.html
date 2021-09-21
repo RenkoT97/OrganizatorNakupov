@@ -26,27 +26,12 @@
         <div class="container">
             <a class="gumb" href="/vsi_izdelki" >Izbiraj</a>
             <a class="gumb" href="/kosarica" > Košarica </a>
-            <a class="gumb" href="/potrdi"> Potrdi in izračunaj </a>
             <a class="gumb" href="/odjava"  >Odjava</a>
         </div>                        
     </nav>
     <!-- <img src="/static/img/logo.png" alt="logo" width="75" height="75"> -->
     <h2>Košarica</h2>
 
-    <table class="tabela-artiklov">
-        <tr>
-            <th>ID</th>
-            <th>Ime izdelka</th>
-            <th>Količina</th>
-        </tr>
-        %for (id_izdelka, kolicina, ime_izdelka) in kosarica:
-        <tr>
-            <td>{{id_izdelka}}</td>
-            <td>{{ime_izdelka}}</td>
-            <td>{{kolicina}}</td>
-        </tr>
-        %end
-    </table>
-    <a class="gumb" href="/potrdi" style="float:right" > Potrdi in izračunaj </a>
+
 </body>
 </html>
