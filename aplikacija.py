@@ -17,6 +17,8 @@ import izracuni
 import podatki
 import grafi
 
+import plotly.graph_objects as gobject
+
 
 #KONFIGURACIJA
 baza_datoteka = 'organizator_nakupov.db'
@@ -110,6 +112,7 @@ def vsi_izdelki():
 
     cur = baza.cursor()
     cur.execute("SELECT id_izdelka, ime_trgovine, ime_izdelka, firma, okus, redna_cena, teza FROM izdelki")
+    exec(open("grafi.py").read())
     return template('vsi_izdelki.html', vsi_izdelki = cur.fetchall())
 
 @post('/vsi_izdelki/search')
@@ -154,7 +157,8 @@ def kosarica():
                 "WHERE k.id_uporabnik=o.id_uporabnika " +
                 "AND o.id_uporabnika=%s " +
                 "AND v.id_izdelka=k.id_izdelka", (cur.fetchone(),))
-
+    print('sem odprl grafe')
+    exec(open("grafi.py").read())
     return template('kosarica.html', kosarica=cur.fetchall())
 
 @post('/kosarica')
@@ -171,6 +175,7 @@ def dodaj_kosarica():
 
     cur.execute("INSERT INTO kosarica (kolicina, id_izdelka, id_uporabnik) VALUES  (%s, %s, %s)", (kolicina, id_izdelka, cur.fetchone()))
     baza.commit()
+    exec(open("grafi.py").read())
     redirect('/kosarica')
 
 @route('/osebe')
@@ -202,6 +207,7 @@ def img(filepath):
 
 @get('/potrdi')
 def potrdi(): 
+    exec(open("grafi.py").read())
     return template('potrdi.html')
     
 
