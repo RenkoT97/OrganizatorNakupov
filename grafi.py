@@ -116,41 +116,12 @@ razdalja = razdalja(pot)
 kilometri = kilometri(razdalja)
 pot = izracuni.pot
 
-app.layout = dash.html.Div(style={'backgroundColor': colors['background']}, id = 'parent',
-                           children = [
-    dash.html.Div([
-    dash.html.H1(id = 'H0', children = 'Podatki o nakupu', style = {'textAlign':'center',
-                                                         'color': colors['text'],
-                                                        'marginTop':0,'marginBottom':40}),
-        
-        html.P(text(cena_nakupa, razdalja, kilometri))
-    ]),
-    dash.html.Div([
-    dash.html.H1(id = 'H1', children = 'Nacrt poti', style = {'textAlign':'center',
-                                                         'color': colors['text'],
-                                                        'marginTop':40,'marginBottom':40}),
-        
-        dash.dcc.Graph(id = 'line_plot', figure = graf(koordinate, pot, trgovine))
-    ]),
 
-    dash.html.Div([
-    dash.html.H1(id = 'H2', children = 'Razpredelnica izdelkov', style = {'textAlign':'center',
-                                                         'color': colors['text'],
-                                                        'marginTop':40,'marginBottom':0}),
-        
-        dash.dcc.Graph(id = 'line_pl', figure = tabela(izdelki))
-    ]),
-    dash.html.Div([
-    dash.html.H1(id = 'H3', children = 'Razpredelnica kolicin', style = {'textAlign':'center',
-                                                         'color': colors['text'],
-                                                        'marginTop':0,'marginBottom':0}),
-        
-        dash.dcc.Graph(id = 'line_pl2', figure = tabela2(kolicine))
-    ])
+figure1 = graf(koordinate, pot, trgovine)
+figure1.write_image("slike/fig1.svg")
 
-    ])
+figure2 = tabela(izdelki)
+figure2.write_image("slike/fig2.svg")
 
-print('ex')
-if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=8050, debug=False)
-
+figure3 = tabela2(kolicine)
+figure3.write_image("slike/fig3.svg")
