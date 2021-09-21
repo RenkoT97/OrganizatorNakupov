@@ -13,6 +13,10 @@ import hashlib
 import sqlite3
 import runpy
 
+import izracuni
+import podatki
+import grafi
+
 
 #KONFIGURACIJA
 baza_datoteka = 'organizator_nakupov.db'
@@ -189,12 +193,6 @@ def img(filepath):
 ##### redirect
 ########################################
 
-import sys
-#from pathlib import Path
-#sys.path.append(str(Path().cwd().Shiny))
-import izracuni
-import podatki
-from app import *
 
 
 #@get('/odpri')
