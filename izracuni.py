@@ -7,10 +7,10 @@ import podatki
 baza = podatki.baza
 dom = podatki.preberi_lokacijo()
 seznam_trgovin =["spar", "mercator", "tus", "hofer", "lidl"]
-id_in_opis = podatki.id_izdelka_v_opis(baza) #[(1, 'cokolada'), ...]
+id_in_opis = podatki.id_izdelka_v_opis()
 seznam_izdelkov = [el[0] for el in id_in_opis] #['cokolada', 'sladoled', ...]
 mnozica_izdelkov = set(seznam_izdelkov)
-trgovine_z_izdelki = podatki.trgovine_z_izdelki_f(baza) #slovar: {'trgovina':['id1', 'id2'],...}
+trgovine_z_izdelki = podatki.trgovine_z_izdelki_f() #slovar: {'trgovina':['id1', 'id2'],...}
 seznam_izdelkov_v_kosarici = [el[3] for el in podatki.kosarica]
 '''
 def zemljevid_trgovin(trgovine):
@@ -59,11 +59,11 @@ def razdalja(vozlisce1, vozlisce2):
     return math.sqrt((vozlisce2[1] - vozlisce1[1]) ** 2 + (vozlisce2[0] - vozlisce1[0]) ** 2)
 
 #dom = [x,y]    
-def doloci_trgovine(dom, baza, slovar_koordinat, seznam_izdelkov, kombinacija):
+def doloci_trgovine(dom, slovar_koordinat, seznam_izdelkov, kombinacija):
     skupine = [] #skupine vozlišč iste trgovine
     poti = []
     for trgovina in kombinacija:
-        skupine.append(podatki.lokacije(baza, slovar_koordinat, trgovina))
+        skupine.append(podatki.lokacije(slovar_koordinat, trgovina))
     for i in skupine[0]: #skupine[0] je seznam lokacij ene vrste trgovin
         dolzina = razdalja(dom, i)
         if len(kombinacija) > 1:
@@ -113,7 +113,7 @@ def doloci_pot(dom, seznam_izdelkov, seznam_trgovin, seznam_izdelkov_v_kosarici,
     dolzine = []
     trgovine = []
     for kombinacija in kombinacije_trgovin_f(set(seznam_izdelkov_v_kosarici), seznam_trgovin, trgovine_z_izdelki):
-        par = doloci_trgovine(dom, baza, slovar_koordinat, seznam_izdelkov, kombinacija)
+        par = doloci_trgovine(dom, slovar_koordinat, seznam_izdelkov, kombinacija)
         dolzine.append(par[1])
         vozlisca.append(par[0])
         trgovine.append(kombinacija)
@@ -132,7 +132,7 @@ def razporeditev(obiskane_trgovine, izdelki, slovar):
         sez = []
         for izdelek in izdelki:
             if {izdelek}.issubset(slovar[trgovina]):
-                izd = podatki.id_izdelka_v_opis(baza)[izdelek-1]
+                izd = podatki.id_izdelka_v_opis()[izdelek-1]
                 sez.append(izd)
                 izdelki2.remove(izdelek)
         razporeditev.append([trgovina, sez])

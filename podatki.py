@@ -25,13 +25,13 @@ def pridobi_id_kosarice(uporabnik):
     zadnja_vrstica = kosarice.pop()
     return zadnja_vrstica[0]
 
-def cene(baza):
+def cene():
     cur = baza.cursor()
     cur.execute("SELECT id_izdelka, redna_cena FROM izdelki")
     izdelki = cur.fetchall()
     return izdelki
 
-def pretvornik_trgovin_v_koordinate(baza, slovar_koordinat):
+def pretvornik_trgovin_v_koordinate(slovar_koordinat):
     cur = baza.cursor()
     cur.execute("SELECT * FROM trgovine")
     trgovine = cur.fetchall()
@@ -41,15 +41,15 @@ def pretvornik_trgovin_v_koordinate(baza, slovar_koordinat):
     koordinate = [slovar_koordinat[kraj] for kraj in kraji]
     return trgovine, koordinate
 
-def lokacije(baza, slovar_koordinat, trgovina):
+def lokacije(slovar_koordinat, trgovina):
     sez_lokacij = []
-    trgovine, koordinate = pretvornik_trgovin_v_koordinate(baza, slovar_koordinat)
+    trgovine, koordinate = pretvornik_trgovin_v_koordinate(slovar_koordinat)
     for i in range(len(trgovine)):
         if trgovine[i] == trgovina:
             sez_lokacij.append(koordinate[i])
     return sez_lokacij
 
-def trgovine_z_izdelki_f(baza):
+def trgovine_z_izdelki_f():
     slovar = {'spar':[], 'mercator':[],  'tus':[], 'hofer':[], 'lidl':[]}
     #vsaka trgovina ima svoj list izdelkov
     cur = baza.cursor()
@@ -59,7 +59,7 @@ def trgovine_z_izdelki_f(baza):
         slovar[par[1]].append(par[0])
     return slovar
 
-def preberi_kosarico(baza, oseba):
+def preberi_kosarico(oseba):
     cur = baza.cursor()
     cur.execute(f"SELECT * FROM kosarica")# WHERE id_kosarice={idk}")
     kosarice = cur.fetchall()
@@ -102,7 +102,7 @@ def cena(cene, kosarica):
         skupna_cena += kolicina * cena
     return round(skupna_cena,2)
     
-def id_izdelka_v_opis(baza):
+def id_izdelka_v_opis():
     #vsaka trgovina ima svoj list izdelkov
     cur = baza.cursor()
     cur.execute("SELECT ime_izdelka, firma, okus FROM izdelki")
@@ -116,7 +116,7 @@ def id_izdelka_v_opis(baza):
             izdelki[i][j] = a
     return izdelki
 
-def pretvornik_za_tabelo_kolicin(baza):
+def pretvornik_za_tabelo_kolicin():
     slovar = {}
     cur = baza.cursor()
     cur.execute("SELECT id_izdelka, ime_izdelka FROM izdelki")
@@ -144,12 +144,12 @@ slovar_koordinat = {'Corfe Alley' : [0,0], 'Highlands Cliff' : [25,8], 'Broad He
                     'Beechcroft Wynd' : [42,10], 'Mount Pleasant Woodlands' : [35,22], 'Priors Bridge' : [18,30],
                     'Bull Isaf' : [31,19], 'Bernard Fairway' : [55,27]}
 
-slovar_za_tabelo_kolicin = pretvornik_za_tabelo_kolicin(baza)
+slovar_za_tabelo_kolicin = pretvornik_za_tabelo_kolicin()
 oseba = pridobi_uporabnika()
-trgovine, koordinate = pretvornik_trgovin_v_koordinate(baza, slovar_koordinat)
-trgovine_z_izdelki = trgovine_z_izdelki_f(baza)
+trgovine, koordinate = pretvornik_trgovin_v_koordinate(slovar_koordinat)
+trgovine_z_izdelki = trgovine_z_izdelki_f()
 idk = pridobi_id_kosarice(oseba)
-kosarica = preberi_kosarico(baza, oseba)
-skupna_cena = cena(cene(baza),kosarica)
+kosarica = preberi_kosarico(oseba)
+skupna_cena = cena(cene(),kosarica)
 kolicine = tabela_kolicin(kosarica, slovar_za_tabelo_kolicin)
 baza.commit()
