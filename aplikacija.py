@@ -13,6 +13,7 @@ import numpy
 import math
 import random
 import plotly.graph_objects as gobject
+from base64 import b64encode
 
 
 #KONFIGURACIJA
@@ -27,20 +28,9 @@ RELOADER = os.environ.get('BOTTLE_RELOADER', True)
 ROOT = os.environ.get('BOTTLE_ROOT', '/')
 DB_PORT = os.environ.get('POSTGRES_PORT', 5432)
 
-
-def nastaviSporocilo(sporocilo = None):
-    # global napakaSporocilo
-    staro = request.get_cookie("sporocilo", secret=skrivnost)
-    if sporocilo is None:
-        response.delete_cookie('sporocilo')
-    else:
-        response.set_cookie('sporocilo', sporocilo, path="/", secret=skrivnost)
-    return staro 
    
 # mapa za statične vire (slike,css, ...)
 static_dir = "./static"
-
-#skrivnost =  <---- to ne vem kaj je
 
 ###################################
 #### PRIJAVA in REGISTRACIJA
@@ -623,7 +613,10 @@ def potrdi():
 
     
     besedilo = text(cena_nakupa, razdalja, kilometri)
-    return template('potrdi.html', besedilo = besedilo)
+    return template('potrdi.html', besedilo=besedilo,
+                fig1=b64encode(figure1.to_image()),
+                fig2=b64encode(figure2.to_image()),
+                fig3=b64encode(figure3.to_image()))
     
 
 
